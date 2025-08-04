@@ -1,2 +1,6 @@
 /lfs_root/
 /src/binutils-*
+/src/gcc-*
+/src/gmp-*
+/src/mpc-*
+/src/mpfr-*

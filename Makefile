@@ -18,10 +18,13 @@ download:
 
 build: \
 create_lfs_root_dir \
-binutils-compile
+binutils-build-p1 \
+gcc-build-p1
 
 clean: \
-clean_lfs_root_dir
+clean_lfs_root_dir \
+binutils-clean \
+gcc-clean
 
 create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
@@ -31,3 +34,8 @@ clean_lfs_root_dir:
 	rm -rf "$(LFS_ROOT_DIR)"
 
 include mak/binutils.mak
+include mak/gmp.mak
+include mak/mpfr.mak
+include mak/mpc.mak
+include mak/gcc.mak
+include mak/glibc.mak

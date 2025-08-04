@@ -1,8 +1,12 @@
 BINUTILS_SRC_DIR = $(abspath src/binutils-2.45)
 
-binutils-compile:
-	mkdir -p "$(BINUTILS_SRC_DIR)"/build
-	cd "$(BINUTILS_SRC_DIR)"/build && \
+.PHONY: \
+binutils-build-p1 \
+binutils-clean
+
+binutils-build-p1:
+	mkdir -p "$(BINUTILS_SRC_DIR)"/build_p1
+	cd "$(BINUTILS_SRC_DIR)"/build_p1 && \
 		../configure \
 			--prefix="$(LFS_TOOLS_DIR)" \
 			--with-sysroot="$(LFS_ROOT_DIR)" \
@@ -14,3 +18,6 @@ binutils-compile:
 			--enable-default-hash-style=gnu && \
 		make -j$(NPROC) && \
 		make install
+
+binutils-clean:
+	rm -rf "$(BINUTILS_SRC_DIR)"/build_p1
