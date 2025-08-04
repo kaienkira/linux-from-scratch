@@ -32,6 +32,12 @@ gcc-build-p1:
 		make -j$(NPROC) && \
 		make install
 
+# libgomp -> GNU Offloading and Multi-Processing Project (OpenMP & OpenACC Support)
+# libatomic -> __atomic_load, __atomic_store, std::atomic
+# libquadmath -> __float128
+# libssp -> Stack Smashing Protection -fstack-protector
+# libvtv -> Vtable Verification
+
 gcc-clean:
 	rm -f "$(GCC_SRC_DIR)"/gmp
 	rm -f "$(GCC_SRC_DIR)"/mpfr
