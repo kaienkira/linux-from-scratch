@@ -1,5 +1,11 @@
 GCC_SRC_DIR = $(abspath src/gcc-15.1.0)
 
+# libgomp -> GNU Offloading and Multi-Processing Project (OpenMP & OpenACC Support)
+# libatomic -> __atomic_load, __atomic_store, std::atomic
+# libquadmath -> __float128
+# libssp -> Stack Smashing Protection -fstack-protector
+# libvtv -> Vtable Verification
+
 .PHONY: \
 gcc-build-p1
 
@@ -31,12 +37,6 @@ gcc-build-p1:
 			--enable-languages=c,c++ && \
 		make -j$(NPROC) && \
 		make install
-
-# libgomp -> GNU Offloading and Multi-Processing Project (OpenMP & OpenACC Support)
-# libatomic -> __atomic_load, __atomic_store, std::atomic
-# libquadmath -> __float128
-# libssp -> Stack Smashing Protection -fstack-protector
-# libvtv -> Vtable Verification
 
 gcc-clean:
 	rm -f "$(GCC_SRC_DIR)"/gmp
