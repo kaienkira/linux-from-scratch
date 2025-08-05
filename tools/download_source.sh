@@ -32,5 +32,7 @@ download_file 'https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.2.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/gcc/gcc-15.1.0/gcc-15.1.0.tar.xz'
+download_file 'https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.15.9.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/glibc/glibc-2.41.tar.xz'
 
 exit 0

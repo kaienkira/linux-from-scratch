@@ -10,9 +10,9 @@ gcc-build-p1:
 	mkdir -p "$(GCC_SRC_DIR)"/build_p1
 	cd "$(GCC_SRC_DIR)"/build_p1 && \
 		../configure \
-			--prefix="$(LFS_TOOLS_DIR)" \
+			--prefix="$(LFS_ROOT_DIR)"/tools \
 			--with-sysroot="$(LFS_ROOT_DIR)" \
-			--target=$(LFS_TARGET) \
+			--target=$(LFS_COMPILE_TARGET) \
 			--with-glibc-version=$(GLIBC_VERSION) \
 			--with-newlib \
 			--without-headers \

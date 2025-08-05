@@ -8,9 +8,9 @@ binutils-build-p1:
 	mkdir -p "$(BINUTILS_SRC_DIR)"/build_p1
 	cd "$(BINUTILS_SRC_DIR)"/build_p1 && \
 		../configure \
-			--prefix="$(LFS_TOOLS_DIR)" \
+			--prefix="$(LFS_ROOT_DIR)"/tools \
 			--with-sysroot="$(LFS_ROOT_DIR)" \
-			--target=$(LFS_TARGET) \
+			--target=$(LFS_COMPILE_TARGET) \
 			--disable-nls \
 			--enable-gprofng=no \
 			--disable-werror \

@@ -1,6 +1,5 @@
 LFS_ROOT_DIR = $(abspath lfs_root)
-LFS_TOOLS_DIR = $(abspath lfs_root/tools)
-LFS_TARGET = x86_64-lfs-linux-gnu
+LFS_COMPILE_TARGET = x86_64-lfs-linux-gnu
 NPROC = $(shell expr `nproc` - 1)
 
 .PHONY: \
@@ -19,16 +18,19 @@ download:
 build: \
 create_lfs_root_dir \
 binutils-build-p1 \
-gcc-build-p1
+gcc-build-p1 \
+linux-build-headers-p1 \
 
 clean: \
 clean_lfs_root_dir \
 binutils-clean \
-gcc-clean
+gcc-clean \
+linux-clean
 
 create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
-	mkdir -p "$(LFS_TOOLS_DIR)"
+	mkdir -p "$(LFS_ROOT_DIR)"/tools
+	mkdir -p "$(LFS_ROOT_DIR)"/usr
 
 clean_lfs_root_dir:
 	rm -rf "$(LFS_ROOT_DIR)"
@@ -39,3 +41,4 @@ include mak/mpfr.mak
 include mak/mpc.mak
 include mak/gcc.mak
 include mak/glibc.mak
+include mak/linux.mak
