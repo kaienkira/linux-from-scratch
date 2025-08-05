@@ -1,5 +1,5 @@
 GLIBC_VERSION = 2.41
-GLIBC_SRC_DIR = $(abspath src/glibc-2.41)
+GLIBC_SRC_DIR = $(abspath src/glibc-$(GLIBC_VERSION))
 
 # nscd -> Name Service Cache Daemon
 
@@ -14,11 +14,11 @@ glibc-build-p1:
 		echo "sbindir=/usr/bin" >> configparms && \
 		echo "rootsbindir=/usr/bin" >> configparms && \
 		../configure \
+			--build=$(LFS_COMPILE_BUILD) \
+			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
 			--libdir=/usr/lib \
 			--libexecdir=/usr/lib \
-			--build=$(LFS_COMPILE_BUILD) \
-			--host=$(LFS_COMPILE_HOST) \
 			--with-headers="$(LFS_ROOT_DIR)"/usr/include \
 			--enable-kernel=6.15 \
 			--disable-profile \

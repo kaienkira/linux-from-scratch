@@ -24,7 +24,8 @@ create_lfs_root_dir \
 binutils-build-p1 \
 gcc-build-p1 \
 linux-build-headers-p1 \
-glibc-build-p1
+glibc-build-p1 \
+gcc-build-libstdcxx-p1
 
 clean: \
 clean_lfs_root_dir \
