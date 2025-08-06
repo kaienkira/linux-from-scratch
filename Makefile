@@ -41,6 +41,11 @@ create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"/usr/bin
 	mkdir -p "$(LFS_ROOT_DIR)"/usr/include
 	mkdir -p "$(LFS_ROOT_DIR)"/usr/lib
+	cd "$(LFS_ROOT_DIR)" && \
+		ln -sf usr/bin sbin && \
+		ln -sf usr/bin bin && \
+		ln -sf usr/lib lib && \
+		ln -sf usr/lib lib64
 
 clean_lfs_root_dir:
 	rm -rf "$(LFS_ROOT_DIR)"

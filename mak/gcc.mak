@@ -54,6 +54,10 @@ gcc-build-libstdcxx-p1:
 			--with-gxx-include-dir=/tools/$(LFS_COMPILE_TARGET)/include/c++/$(GCC_VERSION) && \
 	make -j$(NPROC) && \
 	make DESTDIR="$(LFS_ROOT_DIR)" install
+	rm -f $(LFS_ROOT_DIR)/usr/lib/libstdc++.la
+	rm -f $(LFS_ROOT_DIR)/usr/lib/libstdc++exp.la
+	rm -f $(LFS_ROOT_DIR)/usr/lib/libstdc++fs.la
+	rm -f $(LFS_ROOT_DIR)/usr/lib/libsupc++.la
 
 gcc-clean:
 	rm -f "$(GCC_SRC_DIR)"/gmp
