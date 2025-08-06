@@ -14,7 +14,8 @@ gcc-build-p1:
 	ln -sf "$(GMP_SRC_DIR)" "$(GCC_SRC_DIR)"/gmp
 	ln -sf "$(MPFR_SRC_DIR)" "$(GCC_SRC_DIR)"/mpfr
 	ln -sf "$(MPC_SRC_DIR)" "$(GCC_SRC_DIR)"/mpc
-	sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+	cd "$(GCC_SRC_DIR)" && \
+		sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 	mkdir -p "$(GCC_SRC_DIR)"/build_p1
 	cd "$(GCC_SRC_DIR)"/build_p1 && \
 		../configure \
