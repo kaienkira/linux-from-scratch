@@ -12,14 +12,16 @@ download \
 build \
 clean \
 create_lfs_root_dir \
-clean_lfs_root_dir
+clean_lfs_root_dir \
+chroot
 
-default: build
+default:
+	@echo PATH:$$PATH
 
 download:
 	bash tools/download_source.sh
 
-build: \
+build-p1: \
 create_lfs_root_dir \
 binutils-build-p1 \
 gcc-build-p1 \
@@ -55,6 +57,9 @@ create_lfs_root_dir:
 
 clean_lfs_root_dir:
 	rm -rf "$(LFS_ROOT_DIR)"
+
+chroot:
+	sudo chroot $(LFS_ROOT_DIR) /bin/bash
 
 include mak/binutils.mak
 include mak/gmp.mak

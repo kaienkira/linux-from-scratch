@@ -2,9 +2,9 @@
 linux-from-scratch
 
 ```
-pacman -S base-devel fakechroot
+pacman -S base-devel
 
 make download
 # extract xz files
-make build
+make build-p1
 ```
