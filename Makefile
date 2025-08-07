@@ -25,14 +25,20 @@ binutils-build-p1 \
 gcc-build-p1 \
 linux-build-headers-p1 \
 glibc-build-p1 \
-gcc-build-libstdcxx-p1
+gcc-build-libstdcxx-p1 \
+m4-build-p1 \
+ncurses-build-p1 \
+bash-build-p1
 
 clean: \
 clean_lfs_root_dir \
 binutils-clean \
 gcc-clean \
 glibc-clean \
-linux-clean
+linux-clean \
+m4-clean \
+ncurses-clean \
+bash-clean
 
 create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
@@ -57,3 +63,6 @@ include mak/mpc.mak
 include mak/gcc.mak
 include mak/glibc.mak
 include mak/linux.mak
+include mak/m4.mak
+include mak/ncurses.mak
+include mak/bash.mak

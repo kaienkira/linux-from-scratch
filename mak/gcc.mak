@@ -40,6 +40,9 @@ gcc-build-p1:
 			--enable-languages=c,c++ && \
 		make -j$(NPROC) && \
 		make install
+	cd "$(GCC_SRC_DIR)" && \
+		cat gcc/limitx.h gcc/glimits.h gcc/limity.h \
+			>"$(LFS_ROOT_DIR)"/tools/lib/gcc/$(LFS_COMPILE_TARGET)/$(GCC_VERSION)/include/limits.h
 
 gcc-build-libstdcxx-p1:
 	mkdir -p "$(GCC_SRC_DIR)"/build_libstdcxx_p1

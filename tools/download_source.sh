@@ -34,5 +34,8 @@ download_file 'https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/gcc/gcc-15.1.0/gcc-15.1.0.tar.xz'
 download_file 'https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.15.9.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/glibc/glibc-2.41.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/m4/m4-1.4.20.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/ncurses/ncurses-6.5.tar.gz'
+download_file 'https://ftp.gnu.org/gnu/bash/bash-5.3.tar.gz'
 
 exit 0

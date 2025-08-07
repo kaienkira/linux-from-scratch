@@ -1,8 +1,11 @@
 /lfs_root/
+/src/bash-*
 /src/binutils-*
 /src/gcc-*
 /src/glibc-*
 /src/gmp-*
 /src/linux-*
+/src/m4-*
 /src/mpc-*
 /src/mpfr-*
+/src/ncurses-*
