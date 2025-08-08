@@ -1,12 +1,12 @@
 NCURSES_SRC_DIR = $(abspath src/ncurses-6.5)
 
 .PHONY: \
-ncurses-build-p1 \
+ncurses-build \
 ncurses-clean
 
-ncurses-build-p1:
-	mkdir -p "$(NCURSES_SRC_DIR)"/build_p1
-	cd "$(NCURSES_SRC_DIR)"/build_p1 && \
+ncurses-build:
+	mkdir -p "$(NCURSES_SRC_DIR)"/build
+	cd "$(NCURSES_SRC_DIR)"/build && \
 		../configure \
 			CFLAGS="-std=gnu17" \
 			--build=$(LFS_COMPILE_BUILD) \
@@ -25,4 +25,4 @@ ncurses-build-p1:
 		make DESTDIR="$(LFS_ROOT_DIR)" install
 
 ncurses-clean:
-	rm -rf "$(NCURSES_SRC_DIR)"/build_p1
+	rm -rf "$(NCURSES_SRC_DIR)"/build

@@ -37,5 +37,6 @@ download_file 'https://ftp.gnu.org/gnu/glibc/glibc-2.41.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/m4/m4-1.4.20.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/ncurses/ncurses-6.5.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/bash/bash-5.3.tar.gz'
+download_file 'https://ftp.gnu.org/gnu/coreutils/coreutils-9.7.tar.xz'
 
 exit 0

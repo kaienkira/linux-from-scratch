@@ -8,7 +8,9 @@ GCC_SRC_DIR = $(abspath src/gcc-$(GCC_VERSION))
 # libvtv -> Vtable Verification
 
 .PHONY: \
-gcc-build-p1
+gcc-build-p1 \
+gcc-build-libstdcxx \
+gcc-clean
 
 gcc-build-p1:
 	ln -sf "$(GMP_SRC_DIR)" "$(GCC_SRC_DIR)"/gmp
@@ -44,9 +46,9 @@ gcc-build-p1:
 		cat gcc/limitx.h gcc/glimits.h gcc/limity.h \
 			>"$(LFS_ROOT_DIR)"/tools/lib/gcc/$(LFS_COMPILE_TARGET)/$(GCC_VERSION)/include/limits.h
 
-gcc-build-libstdcxx-p1:
-	mkdir -p "$(GCC_SRC_DIR)"/build_libstdcxx_p1
-	cd "$(GCC_SRC_DIR)"/build_libstdcxx_p1 && \
+gcc-build-libstdcxx:
+	mkdir -p "$(GCC_SRC_DIR)"/build_libstdcxx
+	cd "$(GCC_SRC_DIR)"/build_libstdcxx && \
 		../libstdc++-v3/configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
@@ -67,4 +69,4 @@ gcc-clean:
 	rm -f "$(GCC_SRC_DIR)"/mpfr
 	rm -f "$(GCC_SRC_DIR)"/mpc
 	rm -rf "$(GCC_SRC_DIR)"/build_p1
-	rm -rf "$(GCC_SRC_DIR)"/build_p1_libstdcxx
+	rm -rf "$(GCC_SRC_DIR)"/build_libstdcxx

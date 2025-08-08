@@ -1,6 +1,7 @@
 /lfs_root/
 /src/bash-*
 /src/binutils-*
+/src/coreutils-*
 /src/gcc-*
 /src/glibc-*
 /src/gmp-*

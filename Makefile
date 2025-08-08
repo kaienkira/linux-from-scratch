@@ -15,22 +15,21 @@ create_lfs_root_dir \
 clean_lfs_root_dir \
 chroot
 
-default:
-	@echo PATH:$$PATH
+default: build
 
 download:
 	bash tools/download_source.sh
 
-build-p1: \
+build: \
 create_lfs_root_dir \
 binutils-build-p1 \
 gcc-build-p1 \
-linux-build-headers-p1 \
-glibc-build-p1 \
-gcc-build-libstdcxx-p1 \
-m4-build-p1 \
-ncurses-build-p1 \
-bash-build-p1
+linux-build-headers \
+glibc-build \
+gcc-build-libstdcxx \
+m4-build \
+ncurses-build \
+bash-build
 
 clean: \
 clean_lfs_root_dir \

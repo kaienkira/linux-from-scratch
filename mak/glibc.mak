@@ -4,11 +4,12 @@ GLIBC_SRC_DIR = $(abspath src/glibc-$(GLIBC_VERSION))
 # nscd -> Name Service Cache Daemon
 
 .PHONY: \
-glibc-build-p1
+glibc-build \
+glibc-clean
 
-glibc-build-p1:
-	mkdir -p "$(GLIBC_SRC_DIR)"/build_p1
-	cd "$(GLIBC_SRC_DIR)"/build_p1 && \
+glibc-build:
+	mkdir -p "$(GLIBC_SRC_DIR)"/build
+	cd "$(GLIBC_SRC_DIR)"/build && \
 		echo "slibdir=/usr/lib" >> configparms && \
 		echo "rtlddir=/usr/lib" >> configparms && \
 		echo "sbindir=/usr/bin" >> configparms && \
@@ -31,4 +32,4 @@ glibc-build-p1:
 		make DESTDIR="$(LFS_ROOT_DIR)" install
 
 glibc-clean:
-	rm -rf "$(GLIBC_SRC_DIR)"/build_p1
+	rm -rf "$(GLIBC_SRC_DIR)"/build
