@@ -1,6 +1,10 @@
 GCC_VERSION = 15.1.0
 GCC_SRC_DIR = $(abspath src/gcc-$(GCC_VERSION))
 
+# __cxa_atexit -> -fuse-cxa-atexit
+# cet -> -fcf-protection=full
+#        -fcf-protection=branch (IBT)
+#        -fcf-protection=return (SHSTK)
 # libgomp -> GNU Offloading and Multi-Processing Project (OpenMP & OpenACC Support)
 # libatomic -> __atomic_load, __atomic_store, std::atomic
 # libquadmath -> __float128
@@ -23,23 +27,35 @@ gcc-build-p1:
 		../configure \
 			--target=$(LFS_COMPILE_TARGET) \
 			--prefix="$(LFS_ROOT_DIR)"/tools \
+			--libexecdir="$(LFS_ROOT_DIR)"/tools/lib \
 			--with-sysroot="$(LFS_ROOT_DIR)" \
-			--with-glibc-version=$(GLIBC_VERSION) \
-			--with-newlib \
-			--without-headers \
-			--enable-default-pie \
-			--enable-default-ssp \
-			--disable-shared \
-			--disable-multilib \
-			--disable-nls \
-			--disable-threads \
 			--disable-libatomic \
 			--disable-libgomp \
 			--disable-libquadmath \
 			--disable-libssp \
-			--disable-libvtv \
 			--disable-libstdcxx \
-			--enable-languages=c,c++ && \
+			--disable-libvtv \
+			--disable-multilib \
+			--disable-nls \
+			--disable-shared \
+			--disable-threads \
+			--disable-werror \
+			--enable-__cxa_atexit \
+			--enable-cet=auto \
+			--enable-checking=release \
+			--enable-clocale=newlib \
+			--enable-default-pie \
+			--enable-default-ssp \
+			--enable-gnu-indirect-function \
+			--enable-gnu-unique-object \
+			--enable-languages=c,c++ \
+			--enable-link-serialization=1 \
+			--enable-linker-build-id \
+			--enable-lto \
+			--with-glibc-version=$(GLIBC_VERSION) \
+			--with-linker-hash-style=gnu \
+			--with-newlib \
+			--without-headers && \
 		make -j$(NPROC) && \
 		make install
 	cd "$(GCC_SRC_DIR)" && \
@@ -56,6 +72,7 @@ gcc-build-libstdcxx:
 			--disable-multilib \
 			--disable-nls \
 			--disable-libstdcxx-pch \
+			--enable-libstdcxx-backtrace \
 			--with-gxx-include-dir=/tools/$(LFS_COMPILE_TARGET)/include/c++/$(GCC_VERSION) && \
 	make -j$(NPROC) && \
 	make DESTDIR="$(LFS_ROOT_DIR)" install
