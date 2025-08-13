@@ -20,14 +20,18 @@ glibc-build:
 			--prefix=/usr \
 			--libdir=/usr/lib \
 			--libexecdir=/usr/lib \
-			--with-headers="$(LFS_ROOT_DIR)"/usr/include \
-			--enable-kernel=6.15 \
 			--disable-profile \
 			--disable-build-nscd \
 			--disable-nscd \
+			--enable-bind-now \
+			--enable-cet \
+			--enable-fortify-source \
+			--enable-kernel=6.15 \
+			--enable-sframe \
+			--enable-stack-protector=strong \
+			--with-headers="$(LFS_ROOT_DIR)"/usr/include \
 			--without-gd \
-			--without-selinux \
-			libc_cv_slibdir=/usr/lib && \
+			--without-selinux && \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
 
