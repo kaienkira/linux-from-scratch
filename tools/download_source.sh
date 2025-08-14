@@ -14,17 +14,28 @@ if [ $? -ne 0 ]; then exit 1; fi
 download_file()
 {
     local url=$1
-    local rename_file=$2
+    local file_name=$2
 
-    echo "start download $url"
-
-    if [ ! -z "$rename_file" ]
+    if [ -z "$filename" ]
     then
-        curl -L -o "$rename_file" "$url"
-    else
-        curl -L -O "$url"
-        if [ $? -ne 0 ]; then exit 1; fi
+        file_name=`basename "$url"`
     fi
+
+    # file already exists
+    if [ -f "$src_dir"/"$file_name" ]
+    then
+        return 0
+    fi
+
+    # delete old version file
+    local package_name=${file_name%%-*}
+    find "$src_dir" -maxdepth 1 -type f -name "${package_name}*" -delete
+
+    echo "start download $url -> $file_name"
+    curl -L -o "$file_name" "$url"
+    if [ $? -ne 0 ]; then exit 1; fi
+
+    return 0
 }
 
 download_file 'https://ftp.gnu.org/gnu/binutils/binutils-2.45.tar.xz'

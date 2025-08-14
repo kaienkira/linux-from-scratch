@@ -9,6 +9,7 @@ export PATH = $(LFS_ROOT_DIR)/tools/bin:$(shell echo $$PATH)
 .PHONY: \
 default \
 download \
+extract_src \
 build \
 clean \
 create_lfs_root_dir \
@@ -19,6 +20,10 @@ default: build
 
 download:
 	bash tools/download_source.sh
+
+extract_src:
+	find src/ -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} \;
+	find src/ -type f -name '*.*z' -exec tar -xvf {} -C src/ \;
 
 build: \
 create_lfs_root_dir \
