@@ -29,7 +29,8 @@ glibc-build \
 gcc-build-libstdcxx \
 m4-build \
 ncurses-build \
-bash-build
+bash-build \
+coreutils-build
 
 clean: \
 clean_lfs_root_dir \
@@ -39,7 +40,8 @@ glibc-clean \
 linux-clean \
 m4-clean \
 ncurses-clean \
-bash-clean
+bash-clean \
+coreutils-clean
 
 create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
@@ -52,7 +54,9 @@ create_lfs_root_dir:
 		ln -sf usr/bin sbin && \
 		ln -sf usr/bin bin && \
 		ln -sf usr/lib lib && \
-		ln -sf usr/lib lib64
+		ln -sf usr/lib lib64 && \
+	cd "$(LFS_ROOT_DIR)"/usr && \
+		ln -sf lib lib64
 
 clean_lfs_root_dir:
 	rm -rf "$(LFS_ROOT_DIR)"
@@ -70,3 +74,4 @@ include mak/linux.mak
 include mak/m4.mak
 include mak/ncurses.mak
 include mak/bash.mak
+include mak/coreutils.mak
