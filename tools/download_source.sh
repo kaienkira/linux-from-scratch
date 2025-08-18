@@ -51,5 +51,9 @@ download_file 'https://ftp.gnu.org/gnu/bash/bash-5.3.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/coreutils/coreutils-9.7.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/diffutils/diffutils-3.11.tar.xz'
 download_file 'https://astron.com/pub/file/file-5.46.tar.gz'
+download_file 'https://ftp.gnu.org/gnu/findutils/findutils-4.10.0.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/gawk/gawk-5.3.2.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/grep/grep-3.12.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/make/make-4.4.1.tar.gz'
 
 exit 0

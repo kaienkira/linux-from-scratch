@@ -4,11 +4,15 @@
 /src/coreutils-*
 /src/diffutils-*
 /src/file-*
+/src/findutils-*
+/src/gawk-*
 /src/gcc-*
 /src/glibc-*
 /src/gmp-*
+/src/grep-*
 /src/linux-*
 /src/m4-*
+/src/make-*
 /src/mpc-*
 /src/mpfr-*
 /src/ncurses-*

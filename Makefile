@@ -11,6 +11,7 @@ default \
 download_source \
 extract_source \
 force_extract_source \
+touch_source_dir \
 build \
 clean \
 create_lfs_root_dir \
@@ -29,6 +30,9 @@ force_extract_source:
 	find src/ -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} \;
 	bash tools/extract_source.sh
 
+touch_source_dir:
+	find src/ -mindepth 1 -maxdepth 1 -type d -exec touch {} \;
+
 build: \
 create_lfs_root_dir \
 binutils-build-p1 \
@@ -40,7 +44,12 @@ m4-build \
 ncurses-build \
 bash-build \
 coreutils-build \
-diffutils-build
+diffutils-build \
+file-build \
+findutils-build \
+gawk-build \
+grep-build \
+make-build
 
 clean: \
 clean_lfs_root_dir \
@@ -52,7 +61,12 @@ m4-clean \
 ncurses-clean \
 bash-clean \
 coreutils-clean \
-diffutils-clean
+diffutils-clean \
+file-clean \
+findutils-clean \
+gawk-clean \
+grep-clean \
+make-clean
 
 create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
@@ -88,3 +102,7 @@ include mak/bash.mak
 include mak/coreutils.mak
 include mak/diffutils.mak
 include mak/file.mak
+include mak/findutils.mak
+include mak/gawk.mak
+include mak/grep.mak
+include mak/make.mak
