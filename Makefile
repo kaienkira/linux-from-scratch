@@ -8,8 +8,9 @@ export PATH = $(LFS_ROOT_DIR)/tools/bin:$(shell echo $$PATH)
 
 .PHONY: \
 default \
-download \
-extract_src \
+download_source \
+extract_source \
+force_extract_source \
 build \
 clean \
 create_lfs_root_dir \
@@ -18,12 +19,15 @@ chroot
 
 default: build
 
-download:
+download_source:
 	bash tools/download_source.sh
 
-extract_src:
+extract_source:
+	bash tools/extract_source.sh
+
+force_extract_source:
 	find src/ -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} \;
-	find src/ -type f -name '*.tar.*' -exec tar -xvf {} -C src/ \;
+	bash tools/extract_source.sh
 
 build: \
 create_lfs_root_dir \

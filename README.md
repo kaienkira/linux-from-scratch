@@ -4,7 +4,7 @@ linux-from-scratch
 ```
 pacman -S base-devel
 
-make download
-make extract_src
+make download_source
+make extract_source
 make build
 ```

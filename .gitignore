@@ -2,6 +2,7 @@
 /src/bash-*
 /src/binutils-*
 /src/coreutils-*
+/src/diffutils-*
 /src/gcc-*
 /src/glibc-*
 /src/gmp-*
