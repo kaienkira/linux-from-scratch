@@ -23,7 +23,7 @@ download:
 
 extract_src:
 	find src/ -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} \;
-	find src/ -type f -name '*.*z' -exec tar -xvf {} -C src/ \;
+	find src/ -type f -name '*.tar.*' -exec tar -xvf {} -C src/ \;
 
 build: \
 create_lfs_root_dir \
