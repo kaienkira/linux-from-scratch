@@ -10,7 +10,8 @@ m4-build:
 		../configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
-			--prefix=/usr && \
+			--prefix=/usr \
+			--disable-nls && \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
 

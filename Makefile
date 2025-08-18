@@ -39,7 +39,8 @@ gcc-build-libstdcxx \
 m4-build \
 ncurses-build \
 bash-build \
-coreutils-build
+coreutils-build \
+diffutils-build
 
 clean: \
 clean_lfs_root_dir \
@@ -50,7 +51,8 @@ linux-clean \
 m4-clean \
 ncurses-clean \
 bash-clean \
-coreutils-clean
+coreutils-clean \
+diffutils-clean
 
 create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
@@ -84,3 +86,5 @@ include mak/m4.mak
 include mak/ncurses.mak
 include mak/bash.mak
 include mak/coreutils.mak
+include mak/diffutils.mak
+include mak/file.mak

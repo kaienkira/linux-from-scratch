@@ -3,6 +3,7 @@
 /src/binutils-*
 /src/coreutils-*
 /src/diffutils-*
+/src/file-*
 /src/gcc-*
 /src/glibc-*
 /src/gmp-*

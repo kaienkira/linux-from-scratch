@@ -11,6 +11,7 @@ bash-build:
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
+			--disable-nls \
 			--without-bash-malloc && \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install

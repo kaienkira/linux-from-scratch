@@ -12,6 +12,7 @@ coreutils-build:
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
 			--libexecdir=/usr/lib \
+			--disable-nls \
 			--enable-no-install-program=hostname,kill,uptime && \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install

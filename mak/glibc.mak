@@ -22,6 +22,7 @@ glibc-build:
 			--libexecdir=/usr/lib \
 			--disable-profile \
 			--disable-build-nscd \
+			--disable-nls \
 			--disable-nscd \
 			--enable-bind-now \
 			--enable-cet \
