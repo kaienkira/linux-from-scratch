@@ -55,7 +55,8 @@ grep-build \
 make-build \
 patch-build \
 sed-build \
-tar-build
+tar-build \
+xz-build
 
 clean: \
 clean_lfs_root_dir \
@@ -75,7 +76,8 @@ grep-clean \
 make-clean \
 patch-clean \
 sed-clean \
-tar-clean
+tar-clean \
+xz-clean
 
 create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
@@ -118,3 +120,4 @@ include mak/make.mak
 include mak/patch.mak
 include mak/sed.mak
 include mak/tar.mak
+include mak/xz.mak
