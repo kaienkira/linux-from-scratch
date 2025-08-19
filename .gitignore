@@ -16,3 +16,6 @@
 /src/mpc-*
 /src/mpfr-*
 /src/ncurses-*
+/src/patch-*
+/src/sed-*
+/src/tar-*

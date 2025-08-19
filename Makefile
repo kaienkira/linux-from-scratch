@@ -8,6 +8,7 @@ export PATH = $(LFS_ROOT_DIR)/tools/bin:$(shell echo $$PATH)
 
 .PHONY: \
 default \
+sync_source \
 download_source \
 extract_source \
 force_extract_source \
@@ -19,6 +20,8 @@ clean_lfs_root_dir \
 chroot
 
 default: build
+
+sync_source: download_source extract_source touch_source_dir
 
 download_source:
 	bash tools/download_source.sh
@@ -49,7 +52,10 @@ file-build \
 findutils-build \
 gawk-build \
 grep-build \
-make-build
+make-build \
+patch-build \
+sed-build \
+tar-build
 
 clean: \
 clean_lfs_root_dir \
@@ -66,7 +72,10 @@ file-clean \
 findutils-clean \
 gawk-clean \
 grep-clean \
-make-clean
+make-clean \
+patch-clean \
+sed-clean \
+tar-clean
 
 create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
@@ -106,3 +115,6 @@ include mak/findutils.mak
 include mak/gawk.mak
 include mak/grep.mak
 include mak/make.mak
+include mak/patch.mak
+include mak/sed.mak
+include mak/tar.mak

@@ -55,5 +55,8 @@ download_file 'https://ftp.gnu.org/gnu/findutils/findutils-4.10.0.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/gawk/gawk-5.3.2.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/grep/grep-3.12.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/make/make-4.4.1.tar.gz'
+download_file 'https://ftp.gnu.org/gnu/patch/patch-2.8.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/sed/sed-4.9.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/tar/tar-1.35.tar.xz'
 
 exit 0
