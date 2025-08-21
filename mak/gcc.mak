@@ -13,7 +13,7 @@ GCC_SRC_DIR = $(abspath src/gcc-$(GCC_VERSION))
 
 .PHONY: \
 gcc-build-p1 \
-gcc-build-libstdcxx \
+gcc-build-p1-libstdcxx \
 gcc-clean
 
 gcc-build-p1:
@@ -62,7 +62,7 @@ gcc-build-p1:
 		cat gcc/limitx.h gcc/glimits.h gcc/limity.h \
 			>"$(LFS_ROOT_DIR)"/tools/lib/gcc/$(LFS_COMPILE_TARGET)/$(GCC_VERSION)/include/limits.h
 
-gcc-build-libstdcxx:
+gcc-build-p1-libstdcxx:
 	mkdir -p "$(GCC_SRC_DIR)"/build_libstdcxx
 	cd "$(GCC_SRC_DIR)"/build_libstdcxx && \
 		../libstdc++-v3/configure \

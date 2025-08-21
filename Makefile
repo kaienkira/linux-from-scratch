@@ -42,7 +42,7 @@ binutils-build-p1 \
 gcc-build-p1 \
 linux-build-headers \
 glibc-build \
-gcc-build-libstdcxx \
+gcc-build-p1-libstdcxx \
 m4-build \
 ncurses-build \
 bash-build \
