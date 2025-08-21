@@ -56,7 +56,8 @@ make-build \
 patch-build \
 sed-build \
 tar-build \
-xz-build
+xz-build \
+binutils-build-p2
 
 clean: \
 clean_lfs_root_dir \

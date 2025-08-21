@@ -15,6 +15,7 @@ xz-build:
 			--disable-rpath && \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
+	rm -f "$(LFS_ROOT_DIR)"/usr/lib/liblzma.la
 
 xz-clean:
 	rm -rf "$(XZ_SRC_DIR)"/build
