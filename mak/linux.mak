@@ -1,4 +1,4 @@
-LINUX_SRC_DIR = $(abspath src/linux-6.15.9)
+LINUX_SRC_DIR = $(abspath src/linux-6.17.7)
 
 .PHONY: \
 linux-build-headers \

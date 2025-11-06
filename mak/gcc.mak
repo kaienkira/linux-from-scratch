@@ -1,4 +1,4 @@
-GCC_VERSION = 15.1.0
+GCC_VERSION = 15.2.0
 GCC_SRC_DIR = $(abspath src/gcc-$(GCC_VERSION))
 
 # __cxa_atexit -> -fuse-cxa-atexit

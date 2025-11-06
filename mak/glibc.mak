@@ -1,4 +1,4 @@
-GLIBC_VERSION = 2.41
+GLIBC_VERSION = 2.42
 GLIBC_SRC_DIR = $(abspath src/glibc-$(GLIBC_VERSION))
 
 # nscd -> Name Service Cache Daemon
