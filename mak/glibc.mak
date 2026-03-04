@@ -1,4 +1,4 @@
-GLIBC_VERSION = 2.42
+GLIBC_VERSION = 2.43
 GLIBC_SRC_DIR = $(abspath src/glibc-$(GLIBC_VERSION))
 
 # nscd -> Name Service Cache Daemon
@@ -27,7 +27,7 @@ glibc-build:
 			--enable-bind-now \
 			--enable-cet \
 			--enable-fortify-source \
-			--enable-kernel=6.15 \
+			--enable-kernel=6.19 \
 			--enable-sframe \
 			--enable-stack-protector=strong \
 			--with-headers="$(LFS_ROOT_DIR)"/usr/include \

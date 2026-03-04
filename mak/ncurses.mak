@@ -1,4 +1,4 @@
-NCURSES_SRC_DIR = $(abspath src/ncurses-6.5)
+NCURSES_SRC_DIR = $(abspath src/ncurses-6.6)
 
 .PHONY: \
 ncurses-build \

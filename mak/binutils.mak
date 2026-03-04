@@ -1,4 +1,4 @@
-BINUTILS_SRC_DIR = $(abspath src/binutils-2.45)
+BINUTILS_SRC_DIR = $(abspath src/binutils-2.46.0)
 
 # cet -> Control-flow Enforcement Technology
 # gold -> -fuse-ld=gold

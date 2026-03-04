@@ -1,4 +1,4 @@
-GAWK_SRC_DIR = $(abspath src/gawk-5.3.2)
+GAWK_SRC_DIR = $(abspath src/gawk-5.4.0)
 
 .PHONY: \
 gawk-build \

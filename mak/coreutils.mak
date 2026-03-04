@@ -1,4 +1,4 @@
-COREUTILS_SRC_DIR = $(abspath src/coreutils-9.8)
+COREUTILS_SRC_DIR = $(abspath src/coreutils-9.10)
 
 .PHONY: \
 coreutils-build \

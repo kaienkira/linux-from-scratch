@@ -1,4 +1,4 @@
-XZ_SRC_DIR = $(abspath src/xz-5.8.1)
+XZ_SRC_DIR = $(abspath src/xz-5.8.2)
 
 .PHONY: \
 xz-build \

@@ -1,4 +1,4 @@
-M4_SRC_DIR = $(abspath src/m4-1.4.20)
+M4_SRC_DIR = $(abspath src/m4-1.4.21)
 
 .PHONY: \
 m4-build \
