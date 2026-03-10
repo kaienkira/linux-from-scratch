@@ -1,28 +1,37 @@
-NCURSES_SRC_DIR = $(abspath src/ncurses-6.6)
+LFS_NCURSES_VERSION = 6.6
+LFS_NCURSES_SRC_TAR = $(abspath src/ncurses-$(LFS_NCURSES_VERSION).tar.gz)
+LFS_NCURSES_SRC_DIR = $(abspath src/ncurses-$(LFS_NCURSES_VERSION))
 
 .PHONY: \
-ncurses-build \
+ncurses-extract-src \
+ncurses-build-p1 \
 ncurses-clean
 
-ncurses-build:
-	mkdir -p "$(NCURSES_SRC_DIR)"/build
-	cd "$(NCURSES_SRC_DIR)"/build && \
+ncurses-extract-src:
+	rm -rf "$(LFS_NCURSES_SRC_DIR)"
+	tar -xvf "$(LFS_NCURSES_SRC_TAR)" -C src/
+
+ncurses-build-p1:
+	$(MAKE) ncurses-extract-src
+	mkdir -p "$(LFS_NCURSES_SRC_DIR)"/build
+	cd "$(LFS_NCURSES_SRC_DIR)"/build && \
 		../configure \
-			CFLAGS="-std=gnu17" \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
 			--mandir=/usr/share/man \
-			--enable-widec \
 			--with-manpage-format=normal \
 			--with-shared \
 			--with-cxx-shared \
 			--without-debug \
 			--without-normal \
 			--without-ada \
-			--disable-stripping && \
+			--disable-stripping \
+			AWK=gawk \
+			&& \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
+	rm -rf "$(LFS_NCURSES_SRC_DIR)"
 
 ncurses-clean:
-	rm -rf "$(NCURSES_SRC_DIR)"/build
+	rm -rf "$(LFS_NCURSES_SRC_DIR)"

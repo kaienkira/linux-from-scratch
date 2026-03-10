@@ -1,30 +1,36 @@
-FILE_SRC_DIR = $(abspath src/file-5.47)
+LFS_FILE_VERSION = 5.47
+LFS_FILE_SRC_TAR = $(abspath src/file-$(LFS_FILE_VERSION).tar.gz)
+LFS_FILE_SRC_DIR = $(abspath src/file-$(LFS_FILE_VERSION))
 
 .PHONY: \
-file-build \
+file-extract-src \
+file-build-p1 \
 file-clean
 
-file-build:
-	mkdir -p "$(FILE_SRC_DIR)"/build_host
-	cd "$(FILE_SRC_DIR)"/build_host && \
+file-extract-src:
+	rm -rf "$(LFS_FILE_SRC_DIR)"
+	tar -xvf "$(LFS_FILE_SRC_TAR)" -C src/
+
+file-build-p1:
+	$(MAKE) file-extract-src
+	mkdir -p "$(LFS_FILE_SRC_DIR)"/build_host
+	cd "$(LFS_FILE_SRC_DIR)"/build_host && \
 		../configure \
 			--disable-bzlib \
 			--disable-libseccomp \
-			--disable-nls \
 			--disable-xzlib \
 			--disable-zlib && \
 		make -j$(NPROC)
-	mkdir -p "$(FILE_SRC_DIR)"/build
-	cd "$(FILE_SRC_DIR)"/build && \
+	mkdir -p "$(LFS_FILE_SRC_DIR)"/build
+	cd "$(LFS_FILE_SRC_DIR)"/build && \
 		../configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
-			--prefix=/usr \
-			--disable-nls && \
-		make FILE_COMPILE="$(FILE_SRC_DIR)"/build_host/src/file -j$(NPROC) && \
+			--prefix=/usr && \
+		make FILE_COMPILE="$(LFS_FILE_SRC_DIR)"/build_host/src/file -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
 	rm -f "$(LFS_ROOT_DIR)"/usr/lib/libmagic.la
+	rm -rf "$(LFS_FILE_SRC_DIR)"
 
 file-clean:
-	rm -rf "$(FILE_SRC_DIR)"/build_host
-	rm -rf "$(FILE_SRC_DIR)"/build
+	rm -rf "$(LFS_FILE_SRC_DIR)"

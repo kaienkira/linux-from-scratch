@@ -10,6 +10,7 @@
 /src/glibc-*
 /src/gmp-*
 /src/grep-*
+/src/gzip-*
 /src/linux-*
 /src/m4-*
 /src/make-*

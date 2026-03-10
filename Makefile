@@ -21,42 +21,31 @@ chroot
 
 default: build
 
-sync_source: download_source extract_source touch_source_dir
-
 download_source:
 	bash tools/download_source.sh
-
-extract_source:
-	bash tools/extract_source.sh
-
-force_extract_source:
-	find src/ -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} \;
-	bash tools/extract_source.sh
-
-touch_source_dir:
-	find src/ -mindepth 1 -maxdepth 1 -type d -exec touch {} \;
 
 build: \
 create_lfs_root_dir \
 binutils-build-p1 \
 gcc-build-p1 \
-linux-build-headers \
-glibc-build \
+linux-build-p1-headers \
+glibc-build-p1 \
 gcc-build-p1-libstdcxx \
-m4-build \
-ncurses-build \
-bash-build \
-coreutils-build \
-diffutils-build \
-file-build \
-findutils-build \
-gawk-build \
-grep-build \
-make-build \
-patch-build \
-sed-build \
-tar-build \
-xz-build \
+m4-build-p1 \
+ncurses-build-p1 \
+bash-build-p1 \
+coreutils-build-p1 \
+diffutils-build-p1 \
+file-build-p1 \
+findutils-build-p1 \
+gawk-build-p1 \
+grep-build-p1 \
+gzip-build-p1 \
+make-build-p1 \
+patch-build-p1 \
+sed-build-p1 \
+tar-build-p1 \
+xz-build-p1 \
 binutils-build-p2
 
 clean: \
@@ -74,6 +63,7 @@ file-clean \
 findutils-clean \
 gawk-clean \
 grep-clean \
+gzip-clean \
 make-clean \
 patch-clean \
 sed-clean \
@@ -117,6 +107,7 @@ include mak/file.mak
 include mak/findutils.mak
 include mak/gawk.mak
 include mak/grep.mak
+include mak/gzip.mak
 include mak/make.mak
 include mak/patch.mak
 include mak/sed.mak

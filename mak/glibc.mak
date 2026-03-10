@@ -1,40 +1,34 @@
-GLIBC_VERSION = 2.43
-GLIBC_SRC_DIR = $(abspath src/glibc-$(GLIBC_VERSION))
+LFS_GLIBC_VERSION = 2.43
+LFS_GLIBC_SRC_TAR = $(abspath src/glibc-$(LFS_GLIBC_VERSION).tar.xz)
+LFS_GLIBC_SRC_DIR = $(abspath src/glibc-$(LFS_GLIBC_VERSION))
 
 # nscd -> Name Service Cache Daemon
 
 .PHONY: \
-glibc-build \
+glibc-extract-src \
+glibc-build-p1 \
 glibc-clean
 
-glibc-build:
-	mkdir -p "$(GLIBC_SRC_DIR)"/build
-	cd "$(GLIBC_SRC_DIR)"/build && \
-		echo "slibdir=/usr/lib" >> configparms && \
-		echo "rtlddir=/usr/lib" >> configparms && \
-		echo "sbindir=/usr/bin" >> configparms && \
+glibc-extract-src:
+	rm -rf "$(LFS_GLIBC_SRC_DIR)"
+	tar -xvf "$(LFS_GLIBC_SRC_TAR)" -C src/
+	patch -d "$(LFS_GLIBC_SRC_DIR)" -N -p1 -i ../glibc-fhs-1.patch
+
+glibc-build-p1: glibc-extract-src
+	mkdir -p "$(LFS_GLIBC_SRC_DIR)"/build
+	cd "$(LFS_GLIBC_SRC_DIR)"/build && \
 		echo "rootsbindir=/usr/bin" >> configparms && \
 		../configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
-			--libdir=/usr/lib \
-			--libexecdir=/usr/lib \
-			--disable-profile \
-			--disable-build-nscd \
-			--disable-nls \
 			--disable-nscd \
-			--enable-bind-now \
-			--enable-cet \
-			--enable-fortify-source \
-			--enable-kernel=6.19 \
-			--enable-sframe \
-			--enable-stack-protector=strong \
-			--with-headers="$(LFS_ROOT_DIR)"/usr/include \
-			--without-gd \
-			--without-selinux && \
+			--enable-kernel=6.18 \
+			libc_cv_slibdir=/usr/lib && \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
+		sed '/RTLDLIST=/s@/usr@@g' -i $(LFS_ROOT_DIR)/usr/bin/ldd
+	rm -rf "$(LFS_GLIBC_SRC_DIR)"
 
 glibc-clean:
-	rm -rf "$(GLIBC_SRC_DIR)"/build
+	rm -rf "$(LFS_GLIBC_SRC_DIR)"

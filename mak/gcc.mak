@@ -1,5 +1,6 @@
-GCC_VERSION = 15.2.0
-GCC_SRC_DIR = $(abspath src/gcc-$(GCC_VERSION))
+LFS_GCC_VERSION = 15.2.0
+LFS_GCC_SRC_TAR = $(abspath src/gcc-$(LFS_GCC_VERSION).tar.xz)
+LFS_GCC_SRC_DIR = $(abspath src/gcc-$(LFS_GCC_VERSION))
 
 # __cxa_atexit -> -fuse-cxa-atexit
 # cet -> -fcf-protection=full
@@ -12,22 +13,30 @@ GCC_SRC_DIR = $(abspath src/gcc-$(GCC_VERSION))
 # libvtv -> Vtable Verification
 
 .PHONY: \
+gcc-extract-src \
 gcc-build-p1 \
 gcc-build-p1-libstdcxx \
 gcc-clean
 
+gcc-extract-src:
+	rm -rf "$(LFS_GCC_SRC_DIR)"
+	tar -xvf "$(LFS_GCC_SRC_TAR)" -C src/
+	tar -xvf "$(LFS_GMP_SRC_TAR)" -C "$(LFS_GCC_SRC_DIR)"
+	mv "$(LFS_GCC_SRC_DIR)/gmp-$(LFS_GMP_VERSION)" "$(LFS_GCC_SRC_DIR)/gmp"
+	tar -xvf "$(LFS_MPFR_SRC_TAR)" -C "$(LFS_GCC_SRC_DIR)"
+	mv "$(LFS_GCC_SRC_DIR)/mpfr-$(LFS_MPFR_VERSION)" "$(LFS_GCC_SRC_DIR)/mpfr"
+	tar -xvf "$(LFS_MPC_SRC_TAR)" -C "$(LFS_GCC_SRC_DIR)"
+	mv "$(LFS_GCC_SRC_DIR)/mpc-$(LFS_MPC_VERSION)" "$(LFS_GCC_SRC_DIR)/mpc"
+
 gcc-build-p1:
-	ln -sf "$(GMP_SRC_DIR)" "$(GCC_SRC_DIR)"/gmp
-	ln -sf "$(MPFR_SRC_DIR)" "$(GCC_SRC_DIR)"/mpfr
-	ln -sf "$(MPC_SRC_DIR)" "$(GCC_SRC_DIR)"/mpc
-	cd "$(GCC_SRC_DIR)" && \
+	$(MAKE) gcc-extract-src
+	cd "$(LFS_GCC_SRC_DIR)" && \
 		sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
-	mkdir -p "$(GCC_SRC_DIR)"/build_p1
-	cd "$(GCC_SRC_DIR)"/build_p1 && \
+	mkdir -p "$(LFS_GCC_SRC_DIR)"/build
+	cd "$(LFS_GCC_SRC_DIR)"/build && \
 		../configure \
 			--target=$(LFS_COMPILE_TARGET) \
 			--prefix="$(LFS_ROOT_DIR)"/tools \
-			--libexecdir="$(LFS_ROOT_DIR)"/tools/lib \
 			--with-sysroot="$(LFS_ROOT_DIR)" \
 			--disable-libatomic \
 			--disable-libgomp \
@@ -40,31 +49,24 @@ gcc-build-p1:
 			--disable-shared \
 			--disable-threads \
 			--disable-werror \
-			--enable-__cxa_atexit \
-			--enable-cet=auto \
-			--enable-checking=release \
-			--enable-clocale=newlib \
 			--enable-default-pie \
 			--enable-default-ssp \
-			--enable-gnu-indirect-function \
-			--enable-gnu-unique-object \
 			--enable-languages=c,c++ \
-			--enable-link-serialization=1 \
-			--enable-linker-build-id \
-			--enable-lto \
-			--with-glibc-version=$(GLIBC_VERSION) \
-			--with-linker-hash-style=gnu \
+			--with-glibc-version=$(LFS_GLIBC_VERSION) \
 			--with-newlib \
-			--without-headers && \
+			--without-headers \
+			&& \
 		make -j$(NPROC) && \
 		make install
-	cd "$(GCC_SRC_DIR)" && \
+	cd "$(LFS_GCC_SRC_DIR)" && \
 		cat gcc/limitx.h gcc/glimits.h gcc/limity.h \
-			>"$(LFS_ROOT_DIR)"/tools/lib/gcc/$(LFS_COMPILE_TARGET)/$(GCC_VERSION)/include/limits.h
+			>"$(LFS_ROOT_DIR)"/tools/lib/gcc/$(LFS_COMPILE_TARGET)/$(LFS_GCC_VERSION)/include/limits.h
+	rm -rf "$(LFS_GCC_SRC_DIR)"
 
 gcc-build-p1-libstdcxx:
-	mkdir -p "$(GCC_SRC_DIR)"/build_libstdcxx
-	cd "$(GCC_SRC_DIR)"/build_libstdcxx && \
+	$(MAKE) gcc-extract-src
+	mkdir -p "$(LFS_GCC_SRC_DIR)"/build
+	cd "$(LFS_GCC_SRC_DIR)"/build && \
 		../libstdc++-v3/configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
@@ -72,18 +74,15 @@ gcc-build-p1-libstdcxx:
 			--disable-multilib \
 			--disable-nls \
 			--disable-libstdcxx-pch \
-			--enable-libstdcxx-backtrace \
-			--with-gxx-include-dir=/tools/$(LFS_COMPILE_TARGET)/include/c++/$(GCC_VERSION) && \
+			--with-gxx-include-dir=/tools/$(LFS_COMPILE_TARGET)/include/c++/$(LFS_GCC_VERSION) \
+			&& \
 	make -j$(NPROC) && \
 	make DESTDIR="$(LFS_ROOT_DIR)" install
 	rm -f $(LFS_ROOT_DIR)/usr/lib/libstdc++.la
 	rm -f $(LFS_ROOT_DIR)/usr/lib/libstdc++exp.la
 	rm -f $(LFS_ROOT_DIR)/usr/lib/libstdc++fs.la
 	rm -f $(LFS_ROOT_DIR)/usr/lib/libsupc++.la
+	rm -rf "$(LFS_GCC_SRC_DIR)"
 
 gcc-clean:
-	rm -f "$(GCC_SRC_DIR)"/gmp
-	rm -f "$(GCC_SRC_DIR)"/mpfr
-	rm -f "$(GCC_SRC_DIR)"/mpc
-	rm -rf "$(GCC_SRC_DIR)"/build_p1
-	rm -rf "$(GCC_SRC_DIR)"/build_libstdcxx
+	rm -rf "$(LFS_GCC_SRC_DIR)"

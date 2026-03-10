@@ -1,19 +1,28 @@
-PATCH_SRC_DIR = $(abspath src/patch-2.8)
+LFS_PATCH_VERSION = 2.8
+LFS_PATCH_SRC_TAR = $(abspath src/patch-$(LFS_PATCH_VERSION).tar.xz)
+LFS_PATCH_SRC_DIR = $(abspath src/patch-$(LFS_PATCH_VERSION))
 
 .PHONY: \
-patch-build \
+patch-extract-src \
+patch-build-p1 \
 patch-clean
 
-patch-build:
-	mkdir -p "$(PATCH_SRC_DIR)"/build
-	cd "$(PATCH_SRC_DIR)"/build && \
+patch-extract-src:
+	rm -rf "$(LFS_PATCH_SRC_DIR)"
+	tar -xvf "$(LFS_PATCH_SRC_TAR)" -C src/
+
+patch-build-p1:
+	$(MAKE) patch-extract-src
+	mkdir -p "$(LFS_PATCH_SRC_DIR)"/build
+	cd "$(LFS_PATCH_SRC_DIR)"/build && \
 		../configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
-			--disable-nls && \
+			&& \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
+	rm -rf "$(LFS_PATCH_SRC_DIR)"
 
 patch-clean:
-	rm -rf "$(PATCH_SRC_DIR)"/build
+	rm -rf "$(LFS_PATCH_SRC_DIR)"

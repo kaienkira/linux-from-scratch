@@ -1,22 +1,30 @@
-GAWK_SRC_DIR = $(abspath src/gawk-5.4.0)
+LFS_GAWK_VERSION = 5.4.0
+LFS_GAWK_SRC_TAR = $(abspath src/gawk-$(LFS_GAWK_VERSION).tar.xz)
+LFS_GAWK_SRC_DIR = $(abspath src/gawk-$(LFS_GAWK_VERSION))
 
 .PHONY: \
-gawk-build \
+gawk-extract-src \
+gawk-build-p1 \
 gawk-clean
 
-gawk-build:
-	mkdir -p "$(GAWK_SRC_DIR)"/build
-	cd "$(GAWK_SRC_DIR)"/build && \
+gawk-extract-src:
+	rm -rf "$(LFS_GAWK_SRC_DIR)"
+	tar -xvf "$(LFS_GAWK_SRC_TAR)" -C src/
+
+gawk-build-p1:
+	$(MAKE) gawk-extract-src
+	cd "$(LFS_GAWK_SRC_DIR)" && \
+		sed -i 's/extras//' Makefile.in
+	mkdir -p "$(LFS_GAWK_SRC_DIR)"/build
+	cd "$(LFS_GAWK_SRC_DIR)"/build && \
 		../configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
-			--libexecdir=/usr/lib \
-			--sysconfdir=/etc \
-			--disable-nls \
-			--without-libsigsegv && \
+			&& \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
+	rm -rf "$(LFS_GAWK_SRC_DIR)"
 
 gawk-clean:
-	rm -rf "$(GAWK_SRC_DIR)"/build
+	rm -rf "$(LFS_GAWK_SRC_DIR)"

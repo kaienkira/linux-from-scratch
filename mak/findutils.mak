@@ -1,20 +1,29 @@
-FINDUTILS_SRC_DIR = $(abspath src/findutils-4.10.0)
+LFS_FINDUTILS_VERSION = 4.10.0
+LFS_FINDUTILS_SRC_TAR = $(abspath src/findutils-$(LFS_FINDUTILS_VERSION).tar.xz)
+LFS_FINDUTILS_SRC_DIR = $(abspath src/findutils-$(LFS_FINDUTILS_VERSION))
 
 .PHONY: \
-findutils-build \
+findutils-extract-src \
+findutils-build-p1 \
 findutils-clean
 
-findutils-build:
-	mkdir -p "$(FINDUTILS_SRC_DIR)"/build
-	cd "$(FINDUTILS_SRC_DIR)"/build && \
+findutils-extract-src:
+	rm -rf "$(LFS_FINDUTILS_SRC_DIR)"
+	tar -xvf "$(LFS_FINDUTILS_SRC_TAR)" -C src/
+
+findutils-build-p1:
+	$(MAKE) findutils-extract-src
+	mkdir -p "$(LFS_FINDUTILS_SRC_DIR)"/build
+	cd "$(LFS_FINDUTILS_SRC_DIR)"/build && \
 		../configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
 			--localstatedir=/var/lib/locate \
-			--disable-nls && \
+			&& \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
+	rm -rf "$(LFS_FINDUTILS_SRC_DIR)"
 
 findutils-clean:
-	rm -rf "$(FINDUTILS_SRC_DIR)"/build
+	rm -rf "$(LFS_FINDUTILS_SRC_DIR)"

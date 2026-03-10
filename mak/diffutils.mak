@@ -1,19 +1,28 @@
-DIFFUTILS_SRC_DIR = $(abspath src/diffutils-3.11)
+LFS_DIFFUTILS_VERSION = 3.12
+LFS_DIFFUTILS_SRC_TAR = $(abspath src/diffutils-$(LFS_DIFFUTILS_VERSION).tar.xz)
+LFS_DIFFUTILS_SRC_DIR = $(abspath src/diffutils-$(LFS_DIFFUTILS_VERSION))
 
 .PHONY: \
-diffutils-build \
+diffutils-extract-src \
+diffutils-build-p1 \
 diffutils-clean
 
-diffutils-build:
-	mkdir -p "$(DIFFUTILS_SRC_DIR)"/build
-	cd "$(DIFFUTILS_SRC_DIR)"/build && \
+diffutils-extract-src:
+	rm -rf "$(LFS_DIFFUTILS_SRC_DIR)"
+	tar -xvf "$(LFS_DIFFUTILS_SRC_TAR)" -C src/
+
+diffutils-build-p1:
+	$(MAKE) diffutils-extract-src
+	mkdir -p "$(LFS_DIFFUTILS_SRC_DIR)"/build
+	cd "$(LFS_DIFFUTILS_SRC_DIR)"/build && \
 		../configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
-			--disable-nls && \
+			gl_cv_func_strcasecmp_works=y && \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
+	rm -rf "$(LFS_DIFFUTILS_SRC_DIR)"
 
 diffutils-clean:
-	rm -rf "$(DIFFUTILS_SRC_DIR)"/build
+	rm -rf "$(LFS_DIFFUTILS_SRC_DIR)"
