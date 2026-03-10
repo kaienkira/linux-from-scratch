@@ -84,5 +84,37 @@ gcc-build-p1-libstdcxx:
 	rm -f $(LFS_ROOT_DIR)/usr/lib/libsupc++.la
 	rm -rf "$(LFS_GCC_SRC_DIR)"
 
+gcc-build-p2:
+	$(MAKE) gcc-extract-src
+	cd "$(LFS_GCC_SRC_DIR)" && \
+		sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64 && \
+		sed -i '/thread_header =/s/@.*@/gthr-posix.h/' \
+			libgcc/Makefile.in libstdc++-v3/include/Makefile.in
+	mkdir -p "$(LFS_GCC_SRC_DIR)"/build
+	cd "$(LFS_GCC_SRC_DIR)"/build && \
+		../configure \
+			--build=$(LFS_COMPILE_BUILD) \
+			--host=$(LFS_COMPILE_HOST) \
+			--prefix=/usr \
+			--disable-libatomic \
+			--disable-libgomp \
+			--disable-libquadmath \
+			--disable-libsanitizer \
+			--disable-libssp \
+			--disable-libvtv \
+			--disable-multilib \
+			--disable-nls \
+			--with-build-sysroot=$(LFS_ROOT_DIR) \
+			--enable-default-pie \
+			--enable-default-ssp \
+			--enable-languages=c,c++ \
+			LDFLAGS_FOR_TARGET=-L$(PWD)/$(LFS_COMPILE_TARGET)/libgcc \
+			&& \
+		make -j$(NPROC) && \
+		make DESTDIR="$(LFS_ROOT_DIR)" install
+	cd "$(LFS_ROOT_DIR)"/usr/bin && \
+		ln -sf gcc cc
+	rm -rf "$(LFS_GCC_SRC_DIR)"
+
 gcc-clean:
 	rm -rf "$(LFS_GCC_SRC_DIR)"
