@@ -20,6 +20,9 @@
 /src/mpfr-*
 /src/ncurses-*
 /src/patch-*
+/src/perl-*
+/src/Python-*
 /src/sed-*
 /src/tar-*
+/src/texinfo-*
 /src/xz-*

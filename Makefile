@@ -8,27 +8,26 @@ export PATH = $(LFS_ROOT_DIR)/tools/bin:$(shell echo $$PATH)
 
 .PHONY: \
 default \
-sync_source \
-download_source \
+download-source \
 build \
 clean \
-create_lfs_root_dir \
-clean_lfs_root_dir \
-create_lfs_temp_tools \
-clean_lfs_temp_tools \
-copy_src_to_lfs_root \
-copy_config_files \
+create-lfs-root-dir \
+clean-lfs-root-dir \
+create-lfs-temp-tools \
+clean-lfs-temp-tools \
+copy-src-to-lfs-root \
+copy-config-files \
 chroot \
 unchroot
 
-default: download_source
+default: download-source
 
-download_source:
+download-source:
 	bash tools/download_source.sh
 
 build: \
-create_lfs_root_dir \
-create_lfs_temp_tools \
+create-lfs-root-dir \
+create-lfs-temp-tools \
 binutils-build-p1 \
 gcc-build-p1 \
 linux-build-p1-headers \
@@ -51,12 +50,12 @@ tar-build-p1 \
 xz-build-p1 \
 binutils-build-p2 \
 gcc-build-p2 \
-copy_src_to_lfs_root \
-copy_config_files \
-clean_lfs_temp_tools
+copy-src-to-lfs-root \
+copy-config-files \
+clean-lfs-temp-tools
 
 clean: \
-clean_lfs_root_dir \
+clean-lfs-root-dir \
 binutils-clean \
 gcc-clean \
 glibc-clean \
@@ -77,7 +76,7 @@ sed-clean \
 tar-clean \
 xz-clean
 
-create_lfs_root_dir:
+create-lfs-root-dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
 	mkdir -p "$(LFS_ROOT_DIR)"/boot
 	mkdir -p "$(LFS_ROOT_DIR)"/etc
@@ -110,21 +109,21 @@ create_lfs_root_dir:
 		ln -sfn ../run run && \
 		ln -sfn ../run/lock lock
 
-clean_lfs_root_dir:
+clean-lfs-root-dir:
 	rm -rf "$(LFS_ROOT_DIR)"
 
-create_lfs_temp_tools:
+create-lfs-temp-tools:
 	mkdir -p "$(LFS_ROOT_DIR)"/tools
 
-clean_lfs_temp_tools:
+clean-lfs-temp-tools:
 	rm -rf "$(LFS_ROOT_DIR)"/tools/
 
-copy_src_to_lfs_root: create_lfs_root_dir
+copy-src-to-lfs-root: create-lfs-root-dir
 	cp -f Makefile-chroot.mak "$(LFS_ROOT_DIR)"/opt/build/Makefile
 	cp -f mak/*.mak "$(LFS_ROOT_DIR)"/opt/build/mak/
 	cp -f src/*.tar.* "$(LFS_ROOT_DIR)"/opt/build/src/
 
-copy_config_files:
+copy-config-files:
 	cp etc/hosts "$(LFS_ROOT_DIR)"/etc/hosts
 	cp etc/passwd "$(LFS_ROOT_DIR)"/etc/passwd
 	cp etc/group "$(LFS_ROOT_DIR)"/etc/group
