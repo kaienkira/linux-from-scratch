@@ -16,9 +16,10 @@ create_lfs_root_dir \
 clean_lfs_root_dir \
 delete_lfs_temp_tools \
 copy_src_to_lfs_root \
+copy_config_files \
 chroot \
 
-default: build
+default: download_source
 
 download_source:
 	bash tools/download_source.sh
@@ -48,6 +49,7 @@ xz-build-p1 \
 binutils-build-p2 \
 gcc-build-p2 \
 copy_src_to_lfs_root \
+copy_config_files \
 delete_lfs_temp_tools
 
 clean: \
@@ -75,20 +77,34 @@ xz-clean
 create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
 	mkdir -p "$(LFS_ROOT_DIR)"/tools
+	mkdir -p "$(LFS_ROOT_DIR)"/boot
+	mkdir -p "$(LFS_ROOT_DIR)"/etc
+	mkdir -p "$(LFS_ROOT_DIR)"/home
+	mkdir -p "$(LFS_ROOT_DIR)"/mnt
+	mkdir -p "$(LFS_ROOT_DIR)"/opt/build
+	mkdir -p "$(LFS_ROOT_DIR)"/opt/build/mak
+	mkdir -p "$(LFS_ROOT_DIR)"/opt/build/src
+	mkdir -p "$(LFS_ROOT_DIR)"/root
 	mkdir -p "$(LFS_ROOT_DIR)"/usr
 	mkdir -p "$(LFS_ROOT_DIR)"/usr/bin
 	mkdir -p "$(LFS_ROOT_DIR)"/usr/include
 	mkdir -p "$(LFS_ROOT_DIR)"/usr/lib
-	mkdir -p "$(LFS_ROOT_DIR)"/opt/build
-	mkdir -p "$(LFS_ROOT_DIR)"/opt/build/mak
-	mkdir -p "$(LFS_ROOT_DIR)"/opt/build/src
+	mkdir -p "$(LFS_ROOT_DIR)"/var
+	mkdir -p "$(LFS_ROOT_DIR)"/dev
+	mkdir -p "$(LFS_ROOT_DIR)"/proc
+	mkdir -p "$(LFS_ROOT_DIR)"/sys
+	mkdir -p "$(LFS_ROOT_DIR)"/run
 	cd "$(LFS_ROOT_DIR)" && \
-		ln -sf usr/bin sbin && \
-		ln -sf usr/bin bin && \
-		ln -sf usr/lib lib && \
-		ln -sf usr/lib lib64 && \
+		ln -sfn usr/bin sbin && \
+		ln -sfn usr/bin bin && \
+		ln -sfn usr/lib lib && \
+		ln -sfn usr/lib lib64 && \
+		ln -sfn /proc/self/mounts etc/mtab
 	cd "$(LFS_ROOT_DIR)"/usr && \
-		ln -sf lib lib64
+		ln -sfn lib lib64
+	cd "$(LFS_ROOT_DIR)"/var && \
+		ln -sfn ../run run && \
+		ln -sfn ../run/lock lock
 
 clean_lfs_root_dir:
 	rm -rf "$(LFS_ROOT_DIR)"
@@ -101,14 +117,39 @@ copy_src_to_lfs_root: create_lfs_root_dir
 	cp -f mak/*.mak "$(LFS_ROOT_DIR)"/opt/build/mak/
 	cp -f src/*.tar.* "$(LFS_ROOT_DIR)"/opt/build/src/
 
+copy_config_files:
+	cp etc/hosts "$(LFS_ROOT_DIR)"/etc/hosts
+	cp etc/passwd "$(LFS_ROOT_DIR)"/etc/passwd
+	cp etc/group "$(LFS_ROOT_DIR)"/etc/group
+
 chroot:
 	@sudo echo "chroot"
-	@sudo chown -R root:root $(LFS_ROOT_DIR)/{etc,opt,usr,var}
-	@sudo chown -R root:root $(LFS_ROOT_DIR)/{bin,lib,lib64,sbin}
-	@sudo chroot $(LFS_ROOT_DIR) /bin/bash
+	@sudo chown -R root:root $(LFS_ROOT_DIR)/{boot,etc,opt,root,usr,var}
+	@sudo chown root:root $(LFS_ROOT_DIR)/{home,mnt}
+	@sudo chown root:root $(LFS_ROOT_DIR)/{dev,proc,run,sys}
+	@sudo mount -B /dev $(LFS_ROOT_DIR)/dev
+	@sudo mount -t devpts -o gid=5,mode=0620 none $(LFS_ROOT_DIR)/dev/pts
+	@sudo mount -t proc none $(LFS_ROOT_DIR)/proc
+	@sudo mount -t sysfs none $(LFS_ROOT_DIR)/sys
+	@sudo mount -t tmpfs none $(LFS_ROOT_DIR)/run
+	@-sudo chroot $(LFS_ROOT_DIR) /usr/bin/env -i \
+		HOME=/root \
+		TERM="$(TERM)" \
+		PS1='(chroot) \u:\w\$$ ' \
+		PATH=/usr/bin \
+		/bin/bash
+	$(MAKE) unchroot
+
+unchroot:
 	@sudo echo "unchroot"
-	@sudo chown -R `id -un`:`id -g` $(LFS_ROOT_DIR)/{etc,opt,usr,var}
-	@sudo chown -R `id -un`:`id -g` $(LFS_ROOT_DIR)/{bin,lib,lib64,sbin}
+	@-sudo umount $(LFS_ROOT_DIR)/run
+	@-sudo umount $(LFS_ROOT_DIR)/sys
+	@-sudo umount $(LFS_ROOT_DIR)/proc
+	@-sudo umount $(LFS_ROOT_DIR)/dev/pts
+	@-sudo umount $(LFS_ROOT_DIR)/dev
+	@sudo chown -R `id -un`:`id -g` $(LFS_ROOT_DIR)/{boot,etc,opt,root,usr,var}
+	@sudo chown `id -un`:`id -g` $(LFS_ROOT_DIR)/{home,mnt}
+	@sudo chown `id -un`:`id -g` $(LFS_ROOT_DIR)/{dev,proc,run,sys}
 
 include mak/binutils.mak
 include mak/gmp.mak
