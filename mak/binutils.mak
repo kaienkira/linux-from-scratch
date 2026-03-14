@@ -44,9 +44,9 @@ binutils-build-p1:
 
 binutils-build-p2:
 	$(MAKE) binutils-extract-src
-	mkdir -p "$(LFS_BINUTILS_SRC_DIR)"/build
 	cd "$(LFS_BINUTILS_SRC_DIR)" && \
-		sed '6031s/$add_dir//' -i ltmain.sh
+		sed '6031s/$$add_dir//' -i ltmain.sh
+	mkdir -p "$(LFS_BINUTILS_SRC_DIR)"/build
 	cd "$(LFS_BINUTILS_SRC_DIR)"/build && \
 		../configure \
 			--build=$(LFS_COMPILE_BUILD) \

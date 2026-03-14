@@ -22,6 +22,8 @@ bash-build-p1:
 			--without-bash-malloc && \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
+	cd "$(LFS_ROOT_DIR)"/usr/bin && \
+		ln -sf bash sh
 	rm -rf "$(LFS_BASH_SRC_DIR)"
 
 bash-clean:

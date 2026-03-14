@@ -14,10 +14,12 @@ build \
 clean \
 create_lfs_root_dir \
 clean_lfs_root_dir \
-delete_lfs_temp_tools \
+create_lfs_temp_tools \
+clean_lfs_temp_tools \
 copy_src_to_lfs_root \
 copy_config_files \
 chroot \
+unchroot
 
 default: download_source
 
@@ -26,6 +28,7 @@ download_source:
 
 build: \
 create_lfs_root_dir \
+create_lfs_temp_tools \
 binutils-build-p1 \
 gcc-build-p1 \
 linux-build-p1-headers \
@@ -50,7 +53,7 @@ binutils-build-p2 \
 gcc-build-p2 \
 copy_src_to_lfs_root \
 copy_config_files \
-delete_lfs_temp_tools
+clean_lfs_temp_tools
 
 clean: \
 clean_lfs_root_dir \
@@ -76,7 +79,6 @@ xz-clean
 
 create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
-	mkdir -p "$(LFS_ROOT_DIR)"/tools
 	mkdir -p "$(LFS_ROOT_DIR)"/boot
 	mkdir -p "$(LFS_ROOT_DIR)"/etc
 	mkdir -p "$(LFS_ROOT_DIR)"/home
@@ -94,6 +96,8 @@ create_lfs_root_dir:
 	mkdir -p "$(LFS_ROOT_DIR)"/proc
 	mkdir -p "$(LFS_ROOT_DIR)"/sys
 	mkdir -p "$(LFS_ROOT_DIR)"/run
+	install -d -m1777 "$(LFS_ROOT_DIR)"/tmp
+	install -d -m1777 "$(LFS_ROOT_DIR)"/var/tmp
 	cd "$(LFS_ROOT_DIR)" && \
 		ln -sfn usr/bin sbin && \
 		ln -sfn usr/bin bin && \
@@ -109,7 +113,10 @@ create_lfs_root_dir:
 clean_lfs_root_dir:
 	rm -rf "$(LFS_ROOT_DIR)"
 
-delete_lfs_temp_tools:
+create_lfs_temp_tools:
+	mkdir -p "$(LFS_ROOT_DIR)"/tools
+
+clean_lfs_temp_tools:
 	rm -rf "$(LFS_ROOT_DIR)"/tools/
 
 copy_src_to_lfs_root: create_lfs_root_dir
@@ -125,6 +132,7 @@ copy_config_files:
 chroot:
 	@sudo echo "chroot"
 	@sudo chown -R root:root $(LFS_ROOT_DIR)/{boot,etc,opt,root,usr,var}
+	@sudo chown -h root:root $(LFS_ROOT_DIR)/{bin,lib,lib64,sbin}
 	@sudo chown root:root $(LFS_ROOT_DIR)/{home,mnt}
 	@sudo chown root:root $(LFS_ROOT_DIR)/{dev,proc,run,sys}
 	@sudo mount -B /dev $(LFS_ROOT_DIR)/dev
@@ -148,6 +156,7 @@ unchroot:
 	@-sudo umount $(LFS_ROOT_DIR)/dev/pts
 	@-sudo umount $(LFS_ROOT_DIR)/dev
 	@sudo chown -R `id -un`:`id -g` $(LFS_ROOT_DIR)/{boot,etc,opt,root,usr,var}
+	@sudo chown -h `id -un`:`id -g` $(LFS_ROOT_DIR)/{bin,lib,lib64,sbin}
 	@sudo chown `id -un`:`id -g` $(LFS_ROOT_DIR)/{home,mnt}
 	@sudo chown `id -un`:`id -g` $(LFS_ROOT_DIR)/{dev,proc,run,sys}
 

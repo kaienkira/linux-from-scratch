@@ -82,5 +82,7 @@ download_file 'https://ftp.gnu.org/gnu/patch/patch-2.8.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/sed/sed-4.9.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/tar/tar-1.35.tar.xz'
 download_file 'https://github.com/tukaani-project/xz/releases/download/v5.8.2/xz-5.8.2.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/gettext/gettext-1.0.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/bison/bison-3.8.2.tar.xz'
 
 exit 0

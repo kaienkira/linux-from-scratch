@@ -76,8 +76,8 @@ gcc-build-p1-libstdcxx:
 			--disable-libstdcxx-pch \
 			--with-gxx-include-dir=/tools/$(LFS_COMPILE_TARGET)/include/c++/$(LFS_GCC_VERSION) \
 			&& \
-	make -j$(NPROC) && \
-	make DESTDIR="$(LFS_ROOT_DIR)" install
+		make -j$(NPROC) && \
+		make DESTDIR="$(LFS_ROOT_DIR)" install
 	rm -f $(LFS_ROOT_DIR)/usr/lib/libstdc++.la
 	rm -f $(LFS_ROOT_DIR)/usr/lib/libstdc++exp.la
 	rm -f $(LFS_ROOT_DIR)/usr/lib/libstdc++fs.la

@@ -1,11 +1,13 @@
 /lfs_root/
 /src/bash-*
 /src/binutils-*
+/src/bison-*
 /src/coreutils-*
 /src/diffutils-*
 /src/file-*
 /src/findutils-*
 /src/gawk-*
+/src/gettext-*
 /src/gcc-*
 /src/glibc-*
 /src/gmp-*

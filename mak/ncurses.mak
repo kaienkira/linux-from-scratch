@@ -19,6 +19,7 @@ ncurses-build-p1:
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
+			--disable-stripping \
 			--mandir=/usr/share/man \
 			--with-manpage-format=normal \
 			--with-shared \
@@ -26,11 +27,12 @@ ncurses-build-p1:
 			--without-debug \
 			--without-normal \
 			--without-ada \
-			--disable-stripping \
 			AWK=gawk \
 			&& \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
+	cd "$(LFS_ROOT_DIR)"/usr/lib && \
+		ln -sf libncursesw.so libncurses.so
 	rm -rf "$(LFS_NCURSES_SRC_DIR)"
 
 ncurses-clean:
