@@ -1,4 +1,4 @@
-LFS_LINUX_VERSION = 6.18.16
+LFS_LINUX_VERSION = 6.18.18
 LFS_LINUX_SRC_TAR = $(abspath src/linux-$(LFS_LINUX_VERSION).tar.xz)
 LFS_LINUX_SRC_DIR = $(abspath src/linux-$(LFS_LINUX_VERSION))
 
