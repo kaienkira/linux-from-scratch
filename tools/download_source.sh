@@ -87,5 +87,6 @@ download_file 'https://ftp.gnu.org/gnu/bison/bison-3.8.2.tar.xz'
 download_file 'https://www.cpan.org/src/5.0/perl-5.42.0.tar.xz'
 download_file 'https://www.python.org/ftp/python/3.14.3/Python-3.14.3.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/texinfo/texinfo-7.3.tar.xz'
+download_file 'https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-2.41.3.tar.xz'
 
 exit 0
