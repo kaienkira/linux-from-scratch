@@ -98,12 +98,13 @@ create-lfs-root-dir:
 	install -d -m1777 "$(LFS_ROOT_DIR)"/tmp
 	install -d -m1777 "$(LFS_ROOT_DIR)"/var/tmp
 	cd "$(LFS_ROOT_DIR)" && \
-		ln -sfn usr/bin sbin && \
 		ln -sfn usr/bin bin && \
+		ln -sfn usr/bin sbin && \
 		ln -sfn usr/lib lib && \
 		ln -sfn usr/lib lib64 && \
 		ln -sfn /proc/self/mounts etc/mtab
 	cd "$(LFS_ROOT_DIR)"/usr && \
+		ln -sfn bin sbin && \
 		ln -sfn lib lib64
 	cd "$(LFS_ROOT_DIR)"/var && \
 		ln -sfn ../run run && \
@@ -118,21 +119,24 @@ create-lfs-temp-tools:
 clean-lfs-temp-tools:
 	rm -rf "$(LFS_ROOT_DIR)"/tools/
 
-copy-src-to-lfs-root: create-lfs-root-dir
+copy-src-to-lfs-root:
 	cp -f Makefile-chroot.mak "$(LFS_ROOT_DIR)"/opt/build/Makefile
 	cp -f mak/*.mak "$(LFS_ROOT_DIR)"/opt/build/mak/
 	cp -f src/*.tar.* "$(LFS_ROOT_DIR)"/opt/build/src/
+	cp -f src/*.patch "$(LFS_ROOT_DIR)"/opt/build/src/
 
 copy-config-files:
 	cp etc/hosts "$(LFS_ROOT_DIR)"/etc/hosts
 	cp etc/passwd "$(LFS_ROOT_DIR)"/etc/passwd
 	cp etc/group "$(LFS_ROOT_DIR)"/etc/group
+	cp etc/ld.so.conf "$(LFS_ROOT_DIR)/etc/ld.so.conf"
+	cp etc/nsswitch.conf "$(LFS_ROOT_DIR)"/etc/nsswitch.conf
 
 chroot:
 	@sudo echo "chroot"
 	@sudo chown -R root:root $(LFS_ROOT_DIR)/{boot,etc,opt,root,usr,var}
 	@sudo chown -h root:root $(LFS_ROOT_DIR)/{bin,lib,lib64,sbin}
-	@sudo chown root:root $(LFS_ROOT_DIR)/{home,mnt}
+	@sudo chown root:root $(LFS_ROOT_DIR)/{home,mnt,tmp}
 	@sudo chown root:root $(LFS_ROOT_DIR)/{dev,proc,run,sys}
 	@sudo mount -B /dev $(LFS_ROOT_DIR)/dev
 	@sudo mount -t devpts -o gid=5,mode=0620 none $(LFS_ROOT_DIR)/dev/pts
@@ -156,7 +160,7 @@ unchroot:
 	@-sudo umount $(LFS_ROOT_DIR)/dev
 	@sudo chown -R `id -un`:`id -g` $(LFS_ROOT_DIR)/{boot,etc,opt,root,usr,var}
 	@sudo chown -h `id -un`:`id -g` $(LFS_ROOT_DIR)/{bin,lib,lib64,sbin}
-	@sudo chown `id -un`:`id -g` $(LFS_ROOT_DIR)/{home,mnt}
+	@sudo chown `id -un`:`id -g` $(LFS_ROOT_DIR)/{home,mnt,tmp}
 	@sudo chown `id -un`:`id -g` $(LFS_ROOT_DIR)/{dev,proc,run,sys}
 
 include mak/binutils.mak

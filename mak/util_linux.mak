@@ -4,14 +4,14 @@ LFS_UTIL_LINUX_SRC_DIR = $(abspath src/util-linux-$(LFS_UTIL_LINUX_VERSION))
 
 .PHONY: \
 util-linux-extract-src \
-util-linux-build-choot-p1 \
+util-linux-build-chroot-p1 \
 util-linux-clean
 
 util-linux-extract-src:
 	rm -rf "$(LFS_UTIL_LINUX_SRC_DIR)"
 	tar -xvf "$(LFS_UTIL_LINUX_SRC_TAR)" -C src/
 
-util-linux-build-choot-p1:
+util-linux-build-chroot-p1:
 	$(MAKE) util-linux-extract-src
 	mkdir -p /var/lib/hwclock
 	cd "$(LFS_UTIL_LINUX_SRC_DIR)" && \

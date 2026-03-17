@@ -88,5 +88,8 @@ download_file 'https://www.cpan.org/src/5.0/perl-5.42.0.tar.xz'
 download_file 'https://www.python.org/ftp/python/3.14.3/Python-3.14.3.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/texinfo/texinfo-7.3.tar.xz'
 download_file 'https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-2.41.3.tar.xz'
+download_file 'https://www.kernel.org/pub/linux/docs/man-pages/man-pages-6.17.tar.xz'
+download_file 'https://github.com/Mic92/iana-etc/releases/download/20260310/iana-etc-20260310.tar.gz'
+download_file 'https://data.iana.org/time-zones/releases/tzdata2026a.tar.gz'
 
 exit 0

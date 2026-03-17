@@ -13,9 +13,11 @@
 /src/gmp-*
 /src/grep-*
 /src/gzip-*
+/src/iana-etc-*
 /src/linux-*
 /src/m4-*
 /src/make-*
+/src/man-pages-*
 /src/mpc-*
 /src/mpfr-*
 /src/ncurses-*
@@ -25,5 +27,6 @@
 /src/sed-*
 /src/tar-*
 /src/texinfo-*
+/src/tzdata*
 /src/util-linux-*
 /src/xz-*
