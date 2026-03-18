@@ -20,7 +20,11 @@ build-world: \
 man-pages-build \
 iana-etc-build \
 glibc-build \
-tzdata-build
+tzdata-build \
+zlib-build \
+bzip2-build \
+xz-build \
+lz4-build
 
 clean: \
 gettext-clean \
@@ -31,7 +35,12 @@ texinfo-clean \
 util-linux-clean \
 man-pages-clean \
 iana-etc-clean \
-glibc-clean
+glibc-clean \
+tzdata-clean \
+zlib-clean \
+bzip2-clean \
+xz-clean \
+lz4-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -47,3 +56,7 @@ include mak/man_pages.mak
 include mak/iana_etc.mak
 include mak/glibc.mak
 include mak/tzdata.mak
+include mak/zlib.mak
+include mak/bzip2.mak
+include mak/xz.mak
+include mak/lz4.mak

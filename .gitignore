@@ -2,6 +2,7 @@
 /src/bash-*
 /src/binutils-*
 /src/bison-*
+/src/bzip2-*
 /src/coreutils-*
 /src/diffutils-*
 /src/file-*
@@ -15,6 +16,7 @@
 /src/gzip-*
 /src/iana-etc-*
 /src/linux-*
+/src/lz4-*
 /src/m4-*
 /src/make-*
 /src/man-pages-*
@@ -30,3 +32,4 @@
 /src/tzdata*
 /src/util-linux-*
 /src/xz-*
+/src/zlib-*

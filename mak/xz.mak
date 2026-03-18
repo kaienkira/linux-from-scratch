@@ -5,6 +5,7 @@ LFS_XZ_SRC_DIR = $(abspath src/xz-$(LFS_XZ_VERSION))
 .PHONY: \
 xz-extract-src \
 xz-build-p1 \
+xz-build \
 xz-clean
 
 xz-extract-src:
@@ -13,9 +14,8 @@ xz-extract-src:
 
 xz-build-p1:
 	$(MAKE) xz-extract-src
-	mkdir -p "$(LFS_XZ_SRC_DIR)"/build
-	cd "$(LFS_XZ_SRC_DIR)"/build && \
-		../configure \
+	cd "$(LFS_XZ_SRC_DIR)" && \
+		./configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
@@ -24,6 +24,17 @@ xz-build-p1:
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
 	rm -f "$(LFS_ROOT_DIR)"/usr/lib/liblzma.la
+	rm -rf "$(LFS_XZ_SRC_DIR)"
+
+xz-build:
+	$(MAKE) xz-extract-src
+	cd "$(LFS_XZ_SRC_DIR)" && \
+		./configure \
+			--prefix=/usr \
+			--disable-static \
+			&& \
+		make -j$(NPROC) && \
+		make install
 	rm -rf "$(LFS_XZ_SRC_DIR)"
 
 xz-clean:

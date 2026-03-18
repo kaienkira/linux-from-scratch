@@ -91,5 +91,9 @@ download_file 'https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linu
 download_file 'https://www.kernel.org/pub/linux/docs/man-pages/man-pages-6.17.tar.xz'
 download_file 'https://github.com/Mic92/iana-etc/releases/download/20260310/iana-etc-20260310.tar.gz'
 download_file 'https://data.iana.org/time-zones/releases/tzdata2026a.tar.gz'
+download_file 'https://zlib.net/fossils/zlib-1.3.2.tar.gz'
+download_file 'https://www.sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz'
+download_patch 'https://www.linuxfromscratch.org/patches/lfs/13.0/bzip2-1.0.8-install_docs-1.patch'
+download_file 'https://github.com/lz4/lz4/releases/download/v1.10.0/lz4-1.10.0.tar.gz'
 
 exit 0
