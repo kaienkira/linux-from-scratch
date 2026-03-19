@@ -99,5 +99,7 @@ download_file 'https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.
 download_file 'https://ftp.gnu.org/gnu/readline/readline-8.3.tar.gz'
 download_file 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.47/pcre2-10.47.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/bc/bc-1.08.2.tar.gz'
+download_file 'https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz'
+download_file 'https://distfiles.ariadne.space/pkgconf/pkgconf-2.5.1.tar.xz'
 
 exit 0

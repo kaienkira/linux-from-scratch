@@ -32,7 +32,9 @@ file-build \
 readline-build \
 pcre2-build \
 m4-build \
-bc-build
+bc-build \
+flex-build \
+pkgconf-build
 
 clean: \
 gettext-clean \
@@ -54,7 +56,9 @@ file-clean \
 readline-clean \
 pcre2-clean \
 m4-clean \
-bc-clean
+bc-clean \
+flex-clean \
+pkgconf-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -80,3 +84,5 @@ include mak/readline.mak
 include mak/pcre2.mak
 include mak/m4.mak
 include mak/bc.mak
+include mak/flex.mak
+include mak/pkgconf.mak

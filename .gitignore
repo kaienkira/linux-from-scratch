@@ -8,9 +8,10 @@
 /src/diffutils-*
 /src/file-*
 /src/findutils-*
+/src/flex-*
 /src/gawk-*
-/src/gettext-*
 /src/gcc-*
+/src/gettext-*
 /src/glibc-*
 /src/gmp-*
 /src/grep-*
@@ -25,8 +26,9 @@
 /src/mpfr-*
 /src/ncurses-*
 /src/patch-*
-/src/perl-*
 /src/pcre2-*
+/src/perl-*
+/src/pkgconf-*
 /src/Python-*
 /src/readline-*
 /src/sed-*
