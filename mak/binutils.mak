@@ -18,6 +18,7 @@ LFS_BINUTILS_SRC_DIR = $(abspath src/binutils-$(LFS_BINUTILS_VERSION))
 binutils-extract-src \
 binutils-build-p1 \
 binutils-build-p2 \
+binutils-build \
 binutils-clean
 
 binutils-extract-src:
@@ -67,6 +68,33 @@ binutils-build-p2:
 	rm -f "$(LFS_ROOT_DIR)"/usr/lib/libctf-nobfd.{a,la}
 	rm -f "$(LFS_ROOT_DIR)"/usr/lib/libopcodes.{a,la}
 	rm -f "$(LFS_ROOT_DIR)"/usr/lib/libsframe.{a,la}
+	rm -rf "$(LFS_BINUTILS_SRC_DIR)"
+
+binutils-build:
+	$(MAKE) binutils-extract-src
+	mkdir -p "$(LFS_BINUTILS_SRC_DIR)"/build
+	cd "$(LFS_BINUTILS_SRC_DIR)"/build && \
+		../configure \
+			--prefix=/usr \
+			--sysconfdir=/etc \
+			--disable-werror \
+			--enable-64-bit-bfd \
+			--enable-default-hash-style=gnu \
+			--enable-ld=default \
+			--enable-new-dtags \
+			--enable-plugins \
+			--enable-shared \
+			--with-system-zlib \
+			&& \
+		make tooldir=/usr -j$(NPROC) && \
+		make tooldir=/usr install
+	rm -f /usr/lib/libbfd.a
+	rm -f /usr/lib/libctf.a
+	rm -f /usr/lib/libctf-nobfd.a
+	rm -f /usr/lib/libgprofng.a
+	rm -f /usr/lib/libopcodes.a
+	rm -f /usr/lib/libsframe.a
+	rm -rf /usr/share/doc/gprofng/
 	rm -rf "$(LFS_BINUTILS_SRC_DIR)"
 
 binutils-clean:

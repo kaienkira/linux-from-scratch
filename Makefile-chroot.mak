@@ -34,7 +34,11 @@ pcre2-build \
 m4-build \
 bc-build \
 flex-build \
-pkgconf-build
+pkgconf-build \
+binutils-build \
+gmp-build \
+mpfr-build \
+mpc-build
 
 clean: \
 gettext-clean \
@@ -58,7 +62,11 @@ pcre2-clean \
 m4-clean \
 bc-clean \
 flex-clean \
-pkgconf-clean
+pkgconf-clean \
+binutils-clean \
+gmp-clean \
+mpfr-clean \
+mpc-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -86,3 +94,7 @@ include mak/m4.mak
 include mak/bc.mak
 include mak/flex.mak
 include mak/pkgconf.mak
+include mak/binutils.mak
+include mak/gmp.mak
+include mak/mpfr.mak
+include mak/mpc.mak
