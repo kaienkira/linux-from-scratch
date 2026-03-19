@@ -95,5 +95,9 @@ download_file 'https://zlib.net/fossils/zlib-1.3.2.tar.gz'
 download_file 'https://www.sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz'
 download_patch 'https://www.linuxfromscratch.org/patches/lfs/13.0/bzip2-1.0.8-install_docs-1.patch'
 download_file 'https://github.com/lz4/lz4/releases/download/v1.10.0/lz4-1.10.0.tar.gz'
+download_file 'https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz'
+download_file 'https://ftp.gnu.org/gnu/readline/readline-8.3.tar.gz'
+download_file 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.47/pcre2-10.47.tar.gz'
+download_file 'https://ftp.gnu.org/gnu/bc/bc-1.08.2.tar.gz'
 
 exit 0

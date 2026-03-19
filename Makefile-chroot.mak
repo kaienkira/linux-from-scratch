@@ -1,3 +1,5 @@
+NPROC = $(shell expr `nproc` - 1)
+
 .PHONY: \
 default \
 build \
@@ -24,7 +26,13 @@ tzdata-build \
 zlib-build \
 bzip2-build \
 xz-build \
-lz4-build
+lz4-build \
+zstd-build \
+file-build \
+readline-build \
+pcre2-build \
+m4-build \
+bc-build
 
 clean: \
 gettext-clean \
@@ -40,7 +48,13 @@ tzdata-clean \
 zlib-clean \
 bzip2-clean \
 xz-clean \
-lz4-clean
+lz4-clean \
+zstd-clean \
+file-clean \
+readline-clean \
+pcre2-clean \
+m4-clean \
+bc-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -60,3 +74,9 @@ include mak/zlib.mak
 include mak/bzip2.mak
 include mak/xz.mak
 include mak/lz4.mak
+include mak/zstd.mak
+include mak/file.mak
+include mak/readline.mak
+include mak/pcre2.mak
+include mak/m4.mak
+include mak/bc.mak

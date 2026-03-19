@@ -32,5 +32,15 @@ file-build-p1:
 	rm -f "$(LFS_ROOT_DIR)"/usr/lib/libmagic.la
 	rm -rf "$(LFS_FILE_SRC_DIR)"
 
+file-build:
+	$(MAKE) file-extract-src
+	cd "$(LFS_FILE_SRC_DIR)" && \
+		./configure \
+			--prefix=/usr \
+			&& \
+		make -j$(NPROC) && \
+		make install
+	rm -rf "$(LFS_FILE_SRC_DIR)"
+
 file-clean:
 	rm -rf "$(LFS_FILE_SRC_DIR)"

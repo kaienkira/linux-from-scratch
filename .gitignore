@@ -1,5 +1,6 @@
 /lfs_root/
 /src/bash-*
+/src/bc-*
 /src/binutils-*
 /src/bison-*
 /src/bzip2-*
@@ -25,7 +26,9 @@
 /src/ncurses-*
 /src/patch-*
 /src/perl-*
+/src/pcre2-*
 /src/Python-*
+/src/readline-*
 /src/sed-*
 /src/tar-*
 /src/texinfo-*
@@ -33,3 +36,4 @@
 /src/util-linux-*
 /src/xz-*
 /src/zlib-*
+/src/zstd-*
