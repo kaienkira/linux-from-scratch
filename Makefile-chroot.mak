@@ -38,7 +38,9 @@ pkgconf-build \
 binutils-build \
 gmp-build \
 mpfr-build \
-mpc-build
+mpc-build \
+attr-build \
+acl-build
 
 clean: \
 gettext-clean \
@@ -66,7 +68,9 @@ pkgconf-clean \
 binutils-clean \
 gmp-clean \
 mpfr-clean \
-mpc-clean
+mpc-clean \
+attr-clean \
+acl-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -98,3 +102,5 @@ include mak/binutils.mak
 include mak/gmp.mak
 include mak/mpfr.mak
 include mak/mpc.mak
+include mak/attr.mak
+include mak/acl.mak

@@ -64,7 +64,7 @@ download_file 'https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.2.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/gcc/gcc-15.2.0/gcc-15.2.0.tar.xz'
-download_file 'https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.18.tar.xz'
+download_file 'https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.19.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/glibc/glibc-2.43.tar.xz'
 download_patch 'https://www.linuxfromscratch.org/patches/lfs/13.0/glibc-fhs-1.patch'
 download_file 'https://ftp.gnu.org/gnu/m4/m4-1.4.21.tar.xz'
@@ -101,5 +101,7 @@ download_file 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.
 download_file 'https://ftp.gnu.org/gnu/bc/bc-1.08.2.tar.gz'
 download_file 'https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz'
 download_file 'https://distfiles.ariadne.space/pkgconf/pkgconf-2.5.1.tar.xz'
+download_file 'https://download.savannah.gnu.org/releases/attr/attr-2.5.2.tar.gz'
+download_file 'https://download.savannah.gnu.org/releases/acl/acl-2.3.2.tar.xz'
 
 exit 0

@@ -1,4 +1,6 @@
 /lfs_root/
+/src/acl-*
+/src/attr-*
 /src/bash-*
 /src/bc-*
 /src/binutils-*
