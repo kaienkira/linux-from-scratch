@@ -103,5 +103,6 @@ download_file 'https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.
 download_file 'https://distfiles.ariadne.space/pkgconf/pkgconf-2.5.1.tar.xz'
 download_file 'https://download.savannah.gnu.org/releases/attr/attr-2.5.2.tar.gz'
 download_file 'https://download.savannah.gnu.org/releases/acl/acl-2.3.2.tar.xz'
+download_file 'https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.77.tar.xz'
 
 exit 0

@@ -40,7 +40,8 @@ gmp-build \
 mpfr-build \
 mpc-build \
 attr-build \
-acl-build
+acl-build \
+libcap-build
 
 clean: \
 gettext-clean \
@@ -70,7 +71,8 @@ gmp-clean \
 mpfr-clean \
 mpc-clean \
 attr-clean \
-acl-clean
+acl-clean \
+libcap-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -104,3 +106,4 @@ include mak/mpfr.mak
 include mak/mpc.mak
 include mak/attr.mak
 include mak/acl.mak
+include mak/libcap.mak

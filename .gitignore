@@ -19,6 +19,7 @@
 /src/grep-*
 /src/gzip-*
 /src/iana-etc-*
+/src/libcap-*
 /src/linux-*
 /src/lz4-*
 /src/m4-*
