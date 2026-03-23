@@ -21,7 +21,7 @@ pkgconf-build:
 		make -j$(NPROC) && \
 		make install
 	cd /usr/bin && \
-		ln -sf pkgconfig pkg-config
+		ln -sf pkgconf pkg-config
 	rm -rf "$(LFS_PKGCONF_SRC_DIR)"
 
 pkgconf-clean:

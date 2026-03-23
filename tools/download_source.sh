@@ -104,5 +104,7 @@ download_file 'https://distfiles.ariadne.space/pkgconf/pkgconf-2.5.1.tar.xz'
 download_file 'https://download.savannah.gnu.org/releases/attr/attr-2.5.2.tar.gz'
 download_file 'https://download.savannah.gnu.org/releases/acl/acl-2.3.2.tar.xz'
 download_file 'https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.77.tar.xz'
+download_file 'https://github.com/besser82/libxcrypt/releases/download/v4.5.2/libxcrypt-4.5.2.tar.xz'
+download_file 'https://github.com/shadow-maint/shadow/releases/download/4.19.4/shadow-4.19.4.tar.xz'
 
 exit 0

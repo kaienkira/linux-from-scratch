@@ -20,6 +20,7 @@
 /src/gzip-*
 /src/iana-etc-*
 /src/libcap-*
+/src/libxcrypt-*
 /src/linux-*
 /src/lz4-*
 /src/m4-*
@@ -35,6 +36,7 @@
 /src/Python-*
 /src/readline-*
 /src/sed-*
+/src/shadow-*
 /src/tar-*
 /src/texinfo-*
 /src/tzdata*

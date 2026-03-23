@@ -1,5 +1,5 @@
-LFS_ACL_VERSION = 2.5.2
-LFS_ACL_SRC_TAR = $(abspath src/acl-$(LFS_ACL_VERSION).tar.gz)
+LFS_ACL_VERSION = 2.3.2
+LFS_ACL_SRC_TAR = $(abspath src/acl-$(LFS_ACL_VERSION).tar.xz)
 LFS_ACL_SRC_DIR = $(abspath src/acl-$(LFS_ACL_VERSION))
 
 .PHONY: \

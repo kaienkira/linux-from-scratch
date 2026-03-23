@@ -116,5 +116,32 @@ gcc-build-p2:
 		ln -sf gcc cc
 	rm -rf "$(LFS_GCC_SRC_DIR)"
 
+gcc-build:
+	$(MAKE) gcc-extract-src
+	cd "$(LFS_GCC_SRC_DIR)" && \
+		sed -i 's/char [*]q/const &/' libgomp/affinity-fmt.c && \
+		sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+	mkdir -p "$(LFS_GCC_SRC_DIR)"/build
+	cd "$(LFS_GCC_SRC_DIR)"/build && \
+		../configure \
+			--prefix=/usr \
+			--disable-bootstrap \
+			--disable-fixincludes \
+			--disable-multilib \
+			--enable-default-pie \
+			--enable-default-ssp \
+			--enable-host-pie \
+			--enable-languages=c,c++ \
+			--with-system-zlib \
+			LD=ld \
+			&& \
+		make -j$(NPROC) && \
+		make install
+	cd /usr/bin && \
+		ln -sf gcc cc
+	mkdir -pv /usr/share/gdb/auto-load/usr/lib
+	mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
+	rm -rf "$(LFS_GCC_SRC_DIR)"
+
 gcc-clean:
 	rm -rf "$(LFS_GCC_SRC_DIR)"

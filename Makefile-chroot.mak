@@ -41,7 +41,10 @@ mpfr-build \
 mpc-build \
 attr-build \
 acl-build \
-libcap-build
+libcap-build \
+libxcrypt-build \
+shadow-build \
+gcc-build
 
 clean: \
 gettext-clean \
@@ -72,7 +75,10 @@ mpfr-clean \
 mpc-clean \
 attr-clean \
 acl-clean \
-libcap-clean
+libcap-clean \
+libxcrypt-clean \
+shadow-clean \
+gcc-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -107,3 +113,6 @@ include mak/mpc.mak
 include mak/attr.mak
 include mak/acl.mak
 include mak/libcap.mak
+include mak/libxcrypt.mak
+include mak/shadow.mak
+include mak/gcc.mak
