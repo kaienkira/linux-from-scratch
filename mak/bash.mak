@@ -5,6 +5,7 @@ LFS_BASH_SRC_DIR = $(abspath src/bash-$(LFS_BASH_VERSION))
 .PHONY: \
 bash-extract-src \
 bash-build-p1 \
+bash-build \
 bash-clean
 
 bash-extract-src:
@@ -13,9 +14,8 @@ bash-extract-src:
 
 bash-build-p1:
 	$(MAKE) bash-extract-src
-	mkdir -p "$(LFS_BASH_SRC_DIR)"/build
-	cd "$(LFS_BASH_SRC_DIR)"/build && \
-		../configure \
+	cd "$(LFS_BASH_SRC_DIR)" && \
+		./configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
@@ -24,6 +24,18 @@ bash-build-p1:
 		make DESTDIR="$(LFS_ROOT_DIR)" install
 	cd "$(LFS_ROOT_DIR)"/usr/bin && \
 		ln -sf bash sh
+	rm -rf "$(LFS_BASH_SRC_DIR)"
+
+bash-build:
+	$(MAKE) bash-extract-src
+	cd "$(LFS_BASH_SRC_DIR)" && \
+		./configure \
+			--prefix=/usr \
+			--with-installed-readline \
+			--without-bash-malloc \
+			&& \
+		make -j$(NPROC) && \
+		make install
 	rm -rf "$(LFS_BASH_SRC_DIR)"
 
 bash-clean:

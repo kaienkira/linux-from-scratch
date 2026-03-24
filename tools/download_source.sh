@@ -106,5 +106,8 @@ download_file 'https://download.savannah.gnu.org/releases/acl/acl-2.3.2.tar.xz'
 download_file 'https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.77.tar.xz'
 download_file 'https://github.com/besser82/libxcrypt/releases/download/v4.5.2/libxcrypt-4.5.2.tar.xz'
 download_file 'https://github.com/shadow-maint/shadow/releases/download/4.19.4/shadow-4.19.4.tar.xz'
+download_file 'https://sourceforge.net/projects/psmisc/files/psmisc/psmisc-23.7.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/libtool/libtool-2.5.4.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/gdbm/gdbm-1.26.tar.gz'
 
 exit 0

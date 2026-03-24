@@ -44,11 +44,18 @@ acl-build \
 libcap-build \
 libxcrypt-build \
 shadow-build \
-gcc-build
+gcc-build \
+ncurses-build \
+sed-build \
+psmisc-build \
+gettext-build \
+bison-build \
+grep-build \
+bash-build \
+libtool-build \
+gdbm-build
 
 clean: \
-gettext-clean \
-bison-clean \
 perl-clean \
 python-clean \
 texinfo-clean \
@@ -78,14 +85,21 @@ acl-clean \
 libcap-clean \
 libxcrypt-clean \
 shadow-clean \
-gcc-clean
+gcc-clean \
+ncurses-clean \
+sed-clean \
+psmisc-clean \
+gettext-clean \
+bison-clean \
+grep-clean \
+bash-clean \
+libtool-clean \
+gdbm-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
 	find /usr/{lib,libexec} -name "*.la" -delete
 
-include mak/gettext.mak
-include mak/bison.mak
 include mak/perl.mak
 include mak/python.mak
 include mak/texinfo.mak
@@ -116,3 +130,12 @@ include mak/libcap.mak
 include mak/libxcrypt.mak
 include mak/shadow.mak
 include mak/gcc.mak
+include mak/ncurses.mak
+include mak/sed.mak
+include mak/psmisc.mak
+include mak/gettext.mak
+include mak/bison.mak
+include mak/grep.mak
+include mak/bash.mak
+include mak/libtool.mak
+include mak/gdbm.mak

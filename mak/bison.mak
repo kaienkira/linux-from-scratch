@@ -5,6 +5,7 @@ LFS_BISON_SRC_DIR = $(abspath src/bison-$(LFS_BISON_VERSION))
 .PHONY: \
 bison-extract-src \
 bison-build-chroot-p1 \
+bison-build \
 bison-clean
 
 bison-extract-src:
@@ -12,6 +13,16 @@ bison-extract-src:
 	tar -xvf "$(LFS_BISON_SRC_TAR)" -C src/
 
 bison-build-chroot-p1:
+	$(MAKE) bison-extract-src
+	cd "$(LFS_BISON_SRC_DIR)" && \
+		./configure \
+			--prefix=/usr \
+			&& \
+		make -j$(NPROC) && \
+		make install
+	rm -rf "$(LFS_BISON_SRC_DIR)"
+
+bison-build:
 	$(MAKE) bison-extract-src
 	cd "$(LFS_BISON_SRC_DIR)" && \
 		./configure \

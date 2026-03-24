@@ -16,6 +16,8 @@ LFS_GCC_SRC_DIR = $(abspath src/gcc-$(LFS_GCC_VERSION))
 gcc-extract-src \
 gcc-build-p1 \
 gcc-build-p1-libstdcxx \
+gcc-build-p2 \
+gcc-build \
 gcc-clean
 
 gcc-extract-src:

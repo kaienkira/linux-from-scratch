@@ -5,6 +5,7 @@ LFS_NCURSES_SRC_DIR = $(abspath src/ncurses-$(LFS_NCURSES_VERSION))
 .PHONY: \
 ncurses-extract-src \
 ncurses-build-p1 \
+ncurses-build \
 ncurses-clean
 
 ncurses-extract-src:
@@ -13,9 +14,8 @@ ncurses-extract-src:
 
 ncurses-build-p1:
 	$(MAKE) ncurses-extract-src
-	mkdir -p "$(LFS_NCURSES_SRC_DIR)"/build
-	cd "$(LFS_NCURSES_SRC_DIR)"/build && \
-		../configure \
+	cd "$(LFS_NCURSES_SRC_DIR)" && \
+		./configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
@@ -33,6 +33,34 @@ ncurses-build-p1:
 		make DESTDIR="$(LFS_ROOT_DIR)" install
 	cd "$(LFS_ROOT_DIR)"/usr/lib && \
 		ln -sf libncursesw.so libncurses.so
+	rm -rf "$(LFS_NCURSES_SRC_DIR)"
+
+ncurses-build:
+	$(MAKE) ncurses-extract-src
+	cd "$(LFS_NCURSES_SRC_DIR)" && \
+		./configure \
+			--prefix=/usr \
+			--mandir=/usr/share/man \
+			--enable-pc-files \
+			--with-cxx-shared \
+			--with-pkg-config-libdir=/usr/lib/pkgconfig \
+			--with-shared \
+			--without-debug \
+			--without-normal \
+			&& \
+		make -j$(NPROC) && \
+		make install
+	cd "$(LFS_ROOT_DIR)"/usr/lib && \
+		ln -sf libncursesw.so libncurses.so && \
+		ln -sf libformw.so libform.so && \
+		ln -sf libpanelw.so libpanel.so && \
+		ln -sf libmenuw.so libmenu.so && \
+		ln -sf libncursesw.so libcurses.so
+	cd "$(LFS_ROOT_DIR)"/usr/lib/pkgconfig && \
+		ln -sf ncursesw.pc ncurses.pc && \
+		ln -sf formw.pc form.pc && \
+		ln -sf panelw.pc panel.pc && \
+		ln -sf menuw.pc menu.pc
 	rm -rf "$(LFS_NCURSES_SRC_DIR)"
 
 ncurses-clean:

@@ -13,6 +13,7 @@
 /src/flex-*
 /src/gawk-*
 /src/gcc-*
+/src/gdbm-*
 /src/gettext-*
 /src/glibc-*
 /src/gmp-*
@@ -20,6 +21,7 @@
 /src/gzip-*
 /src/iana-etc-*
 /src/libcap-*
+/src/libtool-*
 /src/libxcrypt-*
 /src/linux-*
 /src/lz4-*
@@ -33,6 +35,7 @@
 /src/pcre2-*
 /src/perl-*
 /src/pkgconf-*
+/src/psmisc-*
 /src/Python-*
 /src/readline-*
 /src/sed-*
