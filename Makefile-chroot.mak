@@ -53,7 +53,9 @@ bison-build \
 grep-build \
 bash-build \
 libtool-build \
-gdbm-build
+gdbm-build \
+expat-build \
+less-build
 
 clean: \
 perl-clean \
@@ -94,7 +96,9 @@ bison-clean \
 grep-clean \
 bash-clean \
 libtool-clean \
-gdbm-clean
+gdbm-clean \
+expat-clean \
+less-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -139,3 +143,5 @@ include mak/grep.mak
 include mak/bash.mak
 include mak/libtool.mak
 include mak/gdbm.mak
+include mak/expat.mak
+include mak/less.mak

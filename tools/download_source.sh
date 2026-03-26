@@ -109,5 +109,7 @@ download_file 'https://github.com/shadow-maint/shadow/releases/download/4.19.4/s
 download_file 'https://sourceforge.net/projects/psmisc/files/psmisc/psmisc-23.7.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/libtool/libtool-2.5.4.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/gdbm/gdbm-1.26.tar.gz'
+download_file 'https://github.com/libexpat/libexpat/releases/download/R_2_7_5/expat-2.7.5.tar.xz'
+download_file 'https://www.greenwoodsoftware.com/less/less-692.tar.gz'
 
 exit 0
