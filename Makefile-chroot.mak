@@ -59,10 +59,16 @@ less-build \
 perl-build \
 autoconf-build \
 automake-build \
-openssl-build
+openssl-build \
+elfutils-build \
+libffi-build \
+sqlite-build \
+python-build \
+coreutils-build \
+diffutils-build \
+gawk-build
 
 clean: \
-python-clean \
 texinfo-clean \
 util-linux-clean \
 man-pages-clean \
@@ -105,13 +111,19 @@ less-clean \
 perl-clean \
 autoconf-clean \
 automake-clean \
-openssl-clean
+openssl-clean \
+elfutils-clean \
+libffi-clean \
+sqlite-clean \
+python-clean \
+coreutils-clean \
+diffutils-clean \
+gawk-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
 	find /usr/{lib,libexec} -name "*.la" -delete
 
-include mak/python.mak
 include mak/texinfo.mak
 include mak/util_linux.mak
 include mak/man_pages.mak
@@ -155,3 +167,10 @@ include mak/perl.mak
 include mak/autoconf.mak
 include mak/automake.mak
 include mak/openssl.mak
+include mak/elfutils.mak
+include mak/libffi.mak
+include mak/sqlite.mak
+include mak/python.mak
+include mak/coreutils.mak
+include mak/diffutils.mak
+include mak/gawk.mak

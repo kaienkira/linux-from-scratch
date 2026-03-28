@@ -5,6 +5,7 @@ LFS_PYTHON_SRC_DIR = $(abspath src/Python-$(LFS_PYTHON_VERSION))
 .PHONY: \
 python-extract-src \
 python-build-chroot-p1 \
+python-build \
 python-clean
 
 python-extract-src:
@@ -18,6 +19,20 @@ python-build-chroot-p1:
 			--prefix=/usr \
 			--enable-shared \
 			--without-ensurepip \
+			--without-static-libpython \
+			&& \
+		make -j$(NPROC) && \
+		make install
+	rm -rf "$(LFS_PYTHON_SRC_DIR)"
+
+python-build:
+	$(MAKE) python-extract-src
+	cd "$(LFS_PYTHON_SRC_DIR)" && \
+		./configure \
+			--prefix=/usr \
+			--enable-optimizations \
+			--enable-shared \
+			--with-system-expat \
 			--without-static-libpython \
 			&& \
 		make -j$(NPROC) && \

@@ -10,6 +10,7 @@
 /src/bzip2-*
 /src/coreutils-*
 /src/diffutils-*
+/src/elfutils-*
 /src/expat-*
 /src/file-*
 /src/findutils-*
@@ -25,6 +26,7 @@
 /src/iana-etc-*
 /src/less-*
 /src/libcap-*
+/src/libffi-*
 /src/libtool-*
 /src/libxcrypt-*
 /src/linux-*
@@ -44,6 +46,7 @@
 /src/Python-*
 /src/readline-*
 /src/sed-*
+/src/sqlite-*
 /src/shadow-*
 /src/tar-*
 /src/texinfo-*
