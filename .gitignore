@@ -1,6 +1,8 @@
 /lfs_root/
 /src/acl-*
 /src/attr-*
+/src/autoconf-*
+/src/automake-*
 /src/bash-*
 /src/bc-*
 /src/binutils-*
@@ -33,6 +35,7 @@
 /src/mpc-*
 /src/mpfr-*
 /src/ncurses-*
+/src/openssl-*
 /src/patch-*
 /src/pcre2-*
 /src/perl-*

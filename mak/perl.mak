@@ -5,6 +5,7 @@ LFS_PERL_SRC_DIR = $(abspath src/perl-$(LFS_PERL_VERSION))
 .PHONY: \
 perl-extract-src \
 perl-build-chroot-p1 \
+perl-build \
 perl-clean
 
 perl-extract-src:
@@ -18,6 +19,21 @@ perl-build-chroot-p1:
 			-D prefix=/usr \
 			-D vendorprefix=/usr \
 			-D useshrplib \
+			&& \
+		make -j$(NPROC) && \
+		make install
+	rm -rf "$(LFS_PERL_SRC_DIR)"
+
+perl-build:
+	$(MAKE) perl-extract-src
+	cd "$(LFS_PERL_SRC_DIR)" && \
+		BUILD_ZLIB=False BUILD_BZIP2=0 \
+		sh Configure -des \
+			-D prefix=/usr \
+			-D vendorprefix=/usr \
+			-D pager="/usr/bin/less -isR" \
+			-D useshrplib \
+			-D usethreads \
 			&& \
 		make -j$(NPROC) && \
 		make install

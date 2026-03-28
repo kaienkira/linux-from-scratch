@@ -55,10 +55,13 @@ bash-build \
 libtool-build \
 gdbm-build \
 expat-build \
-less-build
+less-build \
+perl-build \
+autoconf-build \
+automake-build \
+openssl-build
 
 clean: \
-perl-clean \
 python-clean \
 texinfo-clean \
 util-linux-clean \
@@ -98,13 +101,16 @@ bash-clean \
 libtool-clean \
 gdbm-clean \
 expat-clean \
-less-clean
+less-clean \
+perl-clean \
+autoconf-clean \
+automake-clean \
+openssl-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
 	find /usr/{lib,libexec} -name "*.la" -delete
 
-include mak/perl.mak
 include mak/python.mak
 include mak/texinfo.mak
 include mak/util_linux.mak
@@ -145,3 +151,7 @@ include mak/libtool.mak
 include mak/gdbm.mak
 include mak/expat.mak
 include mak/less.mak
+include mak/perl.mak
+include mak/autoconf.mak
+include mak/automake.mak
+include mak/openssl.mak
