@@ -5,6 +5,7 @@ LFS_GZIP_SRC_DIR = $(abspath src/gzip-$(LFS_GZIP_VERSION))
 .PHONY: \
 gzip-extract-src \
 gzip-build-p1 \
+gzip-build \
 gzip-clean
 
 gzip-extract-src:
@@ -13,15 +14,24 @@ gzip-extract-src:
 
 gzip-build-p1:
 	$(MAKE) gzip-extract-src
-	mkdir -p "$(LFS_GZIP_SRC_DIR)"/build
-	cd "$(LFS_GZIP_SRC_DIR)"/build && \
-		../configure \
+	cd "$(LFS_GZIP_SRC_DIR)" && \
+		./configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
 			&& \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
+	rm -rf "$(LFS_GZIP_SRC_DIR)"
+
+gzip-build:
+	$(MAKE) gzip-extract-src
+	cd "$(LFS_GZIP_SRC_DIR)" && \
+		./configure \
+			--prefix=/usr \
+			&& \
+		make -j$(NPROC) && \
+		make install
 	rm -rf "$(LFS_GZIP_SRC_DIR)"
 
 gzip-clean:

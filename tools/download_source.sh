@@ -117,5 +117,7 @@ download_file 'https://github.com/openssl/openssl/releases/download/openssl-3.6.
 download_file 'https://sourceware.org/ftp/elfutils/0.194/elfutils-0.194.tar.bz2'
 download_file 'https://github.com/libffi/libffi/releases/download/v3.5.2/libffi-3.5.2.tar.gz'
 download_file 'https://sqlite.org/2026/sqlite-autoconf-3510200.tar.gz'
+download_file 'https://ftp.gnu.org/gnu/groff/groff-1.24.1.tar.gz'
+download_file 'https://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.5.8.tar.gz'
 
 exit 0

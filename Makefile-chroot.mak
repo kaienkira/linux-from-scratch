@@ -66,7 +66,14 @@ sqlite-build \
 python-build \
 coreutils-build \
 diffutils-build \
-gawk-build
+gawk-build \
+findutils-build \
+groff-build \
+gzip-build \
+libpipeline-build \
+make-build \
+patch-build \
+tar-build
 
 clean: \
 texinfo-clean \
@@ -118,11 +125,23 @@ sqlite-clean \
 python-clean \
 coreutils-clean \
 diffutils-clean \
-gawk-clean
+gawk-clean \
+findutils-clean \
+groff-clean \
+gzip-clean \
+libpipeline-clean \
+make-clean \
+patch-clean \
+tar-clean \
+clean-temp-files
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
 	find /usr/{lib,libexec} -name "*.la" -delete
+
+clean-temp-files:
+	find /usr/lib /usr/libexec -name \*.la -delete
+	find /usr -depth -name $(uname -m)-lfs-linux-gnu\* | xargs rm -rf
 
 include mak/texinfo.mak
 include mak/util_linux.mak
@@ -174,3 +193,10 @@ include mak/python.mak
 include mak/coreutils.mak
 include mak/diffutils.mak
 include mak/gawk.mak
+include mak/findutils.mak
+include mak/groff.mak
+include mak/gzip.mak
+include mak/libpipeline.mak
+include mak/make.mak
+include mak/patch.mak
+include mak/tar.mak

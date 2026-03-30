@@ -36,6 +36,8 @@ bash-build:
 			&& \
 		make -j$(NPROC) && \
 		make install
+	cd /usr/bin && \
+		ln -sf bash sh
 	rm -rf "$(LFS_BASH_SRC_DIR)"
 
 bash-clean:

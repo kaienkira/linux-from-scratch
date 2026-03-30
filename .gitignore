@@ -22,11 +22,13 @@
 /src/glibc-*
 /src/gmp-*
 /src/grep-*
+/src/groff-*
 /src/gzip-*
 /src/iana-etc-*
 /src/less-*
 /src/libcap-*
 /src/libffi-*
+/src/libpipeline-*
 /src/libtool-*
 /src/libxcrypt-*
 /src/linux-*

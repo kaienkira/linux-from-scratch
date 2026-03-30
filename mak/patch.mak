@@ -5,6 +5,7 @@ LFS_PATCH_SRC_DIR = $(abspath src/patch-$(LFS_PATCH_VERSION))
 .PHONY: \
 patch-extract-src \
 patch-build-p1 \
+patch-build \
 patch-clean
 
 patch-extract-src:
@@ -13,15 +14,24 @@ patch-extract-src:
 
 patch-build-p1:
 	$(MAKE) patch-extract-src
-	mkdir -p "$(LFS_PATCH_SRC_DIR)"/build
-	cd "$(LFS_PATCH_SRC_DIR)"/build && \
-		../configure \
+	cd "$(LFS_PATCH_SRC_DIR)" && \
+		./configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
 			&& \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install
+	rm -rf "$(LFS_PATCH_SRC_DIR)"
+
+patch-build:
+	$(MAKE) patch-extract-src
+	cd "$(LFS_PATCH_SRC_DIR)" && \
+		./configure \
+			--prefix=/usr \
+			&& \
+		make -j$(NPROC) && \
+		make install
 	rm -rf "$(LFS_PATCH_SRC_DIR)"
 
 patch-clean:
