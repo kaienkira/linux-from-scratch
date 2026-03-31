@@ -36,6 +36,8 @@ python-build:
 			--without-static-libpython \
 			&& \
 		make -j$(NPROC) && \
+		rm -f /usr/bin/pip3 && \
+		rm -f /usr/bin/pip3.* && \
 		make install
 	rm -rf "$(LFS_PYTHON_SRC_DIR)"
 

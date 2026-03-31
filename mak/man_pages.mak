@@ -16,6 +16,14 @@ man-pages-build:
 	$(MAKE) man-pages-extract-src
 	cd "$(LFS_MAN_PAGES_SRC_DIR)" && \
 		make -R GIT=false prefix=/usr install
+	rm -f /usr/bin/diffman-git
+	rm -f /usr/bin/grepc
+	rm -f /usr/bin/grepc_c
+	rm -f /usr/bin/grepc_mk
+	rm -f /usr/bin/mansect
+	rm -f /usr/bin/mansectf
+	rm -f /usr/bin/pdfman
+	rm -f /usr/bin/sortman
 	rm -rf "$(LFS_MAN_PAGES_SRC_DIR)"
 
 man-pages-clean:

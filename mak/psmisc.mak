@@ -18,6 +18,7 @@ psmisc-build:
 			--prefix=/usr \
 			&& \
 		make -j$(NPROC) && \
+		rm -f /usr/bin/pstree.x11 && \
 		make install
 	rm -rf "$(LFS_PSMISC_SRC_DIR)"
 
