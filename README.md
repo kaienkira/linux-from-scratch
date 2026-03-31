@@ -4,6 +4,9 @@ linux-from-scratch
 ```
 pacman -S base-devel
 
-make sync_source
+make download-source
 make build
+make chroot
+> cd /opt/build
+> make build
 ```
