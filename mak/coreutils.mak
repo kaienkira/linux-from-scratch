@@ -19,7 +19,6 @@ coreutils-build-p1:
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
 			--prefix=/usr \
-			--enable-install-program=hostname \
 			--enable-no-install-program=kill,uptime && \
 		make -j$(NPROC) && \
 		make DESTDIR="$(LFS_ROOT_DIR)" install

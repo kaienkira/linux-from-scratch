@@ -73,7 +73,8 @@ gzip-build \
 libpipeline-build \
 make-build \
 patch-build \
-tar-build
+tar-build \
+clean-temp-files
 
 clean: \
 texinfo-clean \
