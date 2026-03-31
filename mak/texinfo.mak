@@ -5,6 +5,7 @@ LFS_TEXINFO_SRC_DIR = $(abspath src/texinfo-$(LFS_TEXINFO_VERSION))
 .PHONY: \
 texinfo-extract-src \
 texinfo-build-chroot-p1 \
+texinfo-build \
 texinfo-clean
 
 texinfo-extract-src:
@@ -12,6 +13,16 @@ texinfo-extract-src:
 	tar -xvf "$(LFS_TEXINFO_SRC_TAR)" -C src/
 
 texinfo-build-chroot-p1:
+	$(MAKE) texinfo-extract-src
+	cd "$(LFS_TEXINFO_SRC_DIR)" && \
+		./configure \
+			--prefix=/usr \
+			&& \
+		make -j$(NPROC) && \
+		make install
+	rm -rf "$(LFS_TEXINFO_SRC_DIR)"
+
+texinfo-build:
 	$(MAKE) texinfo-extract-src
 	cd "$(LFS_TEXINFO_SRC_DIR)" && \
 		./configure \

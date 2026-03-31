@@ -74,11 +74,11 @@ libpipeline-build \
 make-build \
 patch-build \
 tar-build \
+texinfo-build \
+util-linux-build \
 clean-temp-files
 
 clean: \
-texinfo-clean \
-util-linux-clean \
 man-pages-clean \
 iana-etc-clean \
 glibc-clean \
@@ -134,7 +134,8 @@ libpipeline-clean \
 make-clean \
 patch-clean \
 tar-clean \
-clean-temp-files
+util-linux-clean \
+texinfo-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -142,10 +143,8 @@ clean-p1-temp-files:
 
 clean-temp-files:
 	find /usr/lib /usr/libexec -name \*.la -delete
-	find /usr -depth -name $(uname -m)-lfs-linux-gnu\* | xargs rm -rf
+	find /usr -depth -name $$(uname -m)-lfs-linux-gnu\* | xargs rm -rf
 
-include mak/texinfo.mak
-include mak/util_linux.mak
 include mak/man_pages.mak
 include mak/iana_etc.mak
 include mak/glibc.mak
@@ -201,3 +200,5 @@ include mak/libpipeline.mak
 include mak/make.mak
 include mak/patch.mak
 include mak/tar.mak
+include mak/texinfo.mak
+include mak/util_linux.mak

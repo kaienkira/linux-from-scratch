@@ -35,5 +35,29 @@ util-linux-build-chroot-p1:
 		make install
 	rm -rf "$(LFS_UTIL_LINUX_SRC_DIR)"
 
+util-linux-build:
+	$(MAKE) util-linux-extract-src
+	mkdir -p /var/lib/hwclock
+	cd "$(LFS_UTIL_LINUX_SRC_DIR)" && \
+		./configure \
+			--prefix=/usr \
+			--libdir=/usr/lib \
+			--runstatedir=/run \
+			--disable-chfn-chsh \
+			--disable-liblastlog2 \
+			--disable-login \
+			--disable-nologin \
+			--disable-pylibmount \
+			--disable-runuser \
+			--disable-setpriv \
+			--disable-static \
+			--disable-su \
+			--without-python \
+			ADJTIME_PATH=/var/lib/hwclock/adjtime \
+			&& \
+		make -j$(NPROC) && \
+		make install
+	rm -rf "$(LFS_UTIL_LINUX_SRC_DIR)"
+
 util-linux-clean:
 	rm -rf "$(LFS_UTIL_LINUX_SRC_DIR)"
