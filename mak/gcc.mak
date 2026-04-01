@@ -97,6 +97,7 @@ gcc-build-p2:
 		../configure \
 			--build=$(LFS_COMPILE_BUILD) \
 			--host=$(LFS_COMPILE_HOST) \
+			--target=$(LFS_COMPILE_TARGET) \
 			--prefix=/usr \
 			--disable-libatomic \
 			--disable-libgomp \
