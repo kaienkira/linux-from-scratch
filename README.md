@@ -2,7 +2,11 @@
 linux-from-scratch
 
 ```
-pacman -S base-devel
+archlinux:
+    pacman -S base-devel
+
+debian:
+    apt install build-essential bison
 
 make download-source
 make build
