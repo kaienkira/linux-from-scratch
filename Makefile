@@ -2,6 +2,7 @@ LFS_ROOT_DIR = $(abspath lfs_root)
 LFS_COMPILE_BUILD = x86_64-pc-linux-gnu
 LFS_COMPILE_HOST = x86_64-lfs-linux-gnu
 LFS_COMPILE_TARGET = x86_64-lfs-linux-gnu
+SHELL = /bin/bash
 NPROC = $(shell expr `nproc` - 1)
 
 export PATH = $(LFS_ROOT_DIR)/tools/bin:$(shell echo $$PATH)
