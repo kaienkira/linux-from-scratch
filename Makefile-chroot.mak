@@ -76,6 +76,10 @@ patch-build \
 tar-build \
 texinfo-build \
 util-linux-build \
+vim-build \
+libnl-build \
+htop-build \
+tree-build \
 clean-temp-files
 
 clean: \
@@ -135,7 +139,11 @@ make-clean \
 patch-clean \
 tar-clean \
 util-linux-clean \
-texinfo-clean
+texinfo-clean \
+vim-clean \
+libnl-clean \
+htop-clean \
+tree-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -202,3 +210,7 @@ include mak/patch.mak
 include mak/tar.mak
 include mak/texinfo.mak
 include mak/util_linux.mak
+include mak/vim.mak
+include mak/libnl.mak
+include mak/htop.mak
+include mak/tree.mak

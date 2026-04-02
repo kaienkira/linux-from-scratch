@@ -119,5 +119,9 @@ download_file 'https://github.com/libffi/libffi/releases/download/v3.5.2/libffi-
 download_file 'https://sqlite.org/2026/sqlite-autoconf-3510200.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/groff/groff-1.24.1.tar.gz'
 download_file 'https://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.5.8.tar.gz'
+download_file 'https://github.com/vim/vim/archive/refs/tags/v9.2.0280.tar.gz' 'vim-9.2.0280.tar.gz'
+download_file 'https://github.com/thom311/libnl/releases/download/libnl3_12_0/libnl-3.12.0.tar.gz'
+download_file 'https://github.com/htop-dev/htop/releases/download/3.4.1/htop-3.4.1.tar.xz'
+download_file 'https://gitlab.com/OldManProgrammer/unix-tree/-/archive/2.3.2/unix-tree-2.3.2.tar.gz'
 
 exit 0

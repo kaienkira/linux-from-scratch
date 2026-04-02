@@ -24,10 +24,12 @@
 /src/grep-*
 /src/groff-*
 /src/gzip-*
+/src/htop-*
 /src/iana-etc-*
 /src/less-*
 /src/libcap-*
 /src/libffi-*
+/src/libnl-*
 /src/libpipeline-*
 /src/libtool-*
 /src/libxcrypt-*
@@ -53,7 +55,9 @@
 /src/tar-*
 /src/texinfo-*
 /src/tzdata*
+/src/unix-tree-*
 /src/util-linux-*
+/src/vim-*
 /src/xz-*
 /src/zlib-*
 /src/zstd-*
