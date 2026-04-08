@@ -64,6 +64,11 @@ elfutils-build \
 libffi-build \
 sqlite-build \
 python-build \
+python-flit-core-build \
+python-packaging-build \
+python-wheel-build \
+python-setuptools-build \
+ninja-build \
 coreutils-build \
 diffutils-build \
 gawk-build \
@@ -128,6 +133,7 @@ elfutils-clean \
 libffi-clean \
 sqlite-clean \
 python-clean \
+ninja-clean \
 coreutils-clean \
 diffutils-clean \
 gawk-clean \
@@ -198,6 +204,7 @@ include mak/elfutils.mak
 include mak/libffi.mak
 include mak/sqlite.mak
 include mak/python.mak
+include mak/ninja.mak
 include mak/coreutils.mak
 include mak/diffutils.mak
 include mak/gawk.mak

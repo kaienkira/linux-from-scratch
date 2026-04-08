@@ -15,6 +15,7 @@
 /src/file-*
 /src/findutils-*
 /src/flex-*
+/src/flit_core-*
 /src/gawk-*
 /src/gcc-*
 /src/gdbm-*
@@ -38,10 +39,13 @@
 /src/m4-*
 /src/make-*
 /src/man-pages-*
+/src/meson-*
 /src/mpc-*
 /src/mpfr-*
 /src/ncurses-*
+/src/ninja-*
 /src/openssl-*
+/src/packaging-*
 /src/patch-*
 /src/pcre2-*
 /src/perl-*
@@ -50,6 +54,7 @@
 /src/Python-*
 /src/readline-*
 /src/sed-*
+/src/setuptools-*
 /src/sqlite-*
 /src/shadow-*
 /src/tar-*
@@ -58,6 +63,7 @@
 /src/unix-tree-*
 /src/util-linux-*
 /src/vim-*
+/src/wheel-*
 /src/xz-*
 /src/zlib-*
 /src/zstd-*
