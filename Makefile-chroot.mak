@@ -69,6 +69,7 @@ python-packaging-build \
 python-wheel-build \
 python-setuptools-build \
 ninja-build \
+python-meson-build \
 coreutils-build \
 diffutils-build \
 gawk-build \
@@ -82,6 +83,8 @@ tar-build \
 texinfo-build \
 util-linux-build \
 vim-build \
+kmod-build \
+iproute2-build \
 libnl-build \
 htop-build \
 tree-build \
@@ -144,9 +147,11 @@ libpipeline-clean \
 make-clean \
 patch-clean \
 tar-clean \
-util-linux-clean \
 texinfo-clean \
+util-linux-clean \
 vim-clean \
+kmod-clean \
+iproute2-clean \
 libnl-clean \
 htop-clean \
 tree-clean
@@ -218,6 +223,8 @@ include mak/tar.mak
 include mak/texinfo.mak
 include mak/util_linux.mak
 include mak/vim.mak
+include mak/kmod.mak
+include mak/iproute2.mak
 include mak/libnl.mak
 include mak/htop.mak
 include mak/tree.mak

@@ -18,6 +18,10 @@ LFS_PYTHON_SETUPTOOLS_VERSION = 82.0.1
 LFS_PYTHON_SETUPTOOLS_SRC_TAR = $(abspath src/setuptools-$(LFS_PYTHON_SETUPTOOLS_VERSION).tar.gz)
 LFS_PYTHON_SETUPTOOLS_SRC_DIR = $(abspath src/setuptools-$(LFS_PYTHON_SETUPTOOLS_VERSION))
 
+LFS_PYTHON_MESON_VERSION = 1.10.2
+LFS_PYTHON_MESON_SRC_TAR = $(abspath src/meson-$(LFS_PYTHON_MESON_VERSION).tar.gz)
+LFS_PYTHON_MESON_SRC_DIR = $(abspath src/meson-$(LFS_PYTHON_MESON_VERSION))
+
 .PHONY: \
 python-extract-src \
 python-build-chroot-p1 \
@@ -26,6 +30,7 @@ python-flit-core-build \
 python-packaging-build \
 python-wheel-build \
 python-setuptools-build \
+python-meson-build \
 python-clean
 
 python-extract-src:
@@ -105,9 +110,21 @@ python-setuptools-build:
 		pip3 install --no-index --find-links dist setuptools
 	rm -rf "$(LFS_PYTHON_SETUPTOOLS_SRC_DIR)"
 
+python-meson-build:
+	rm -rf "$(LFS_PYTHON_MESON_SRC_DIR)"
+	tar -xvf "$(LFS_PYTHON_MESON_SRC_TAR)" -C src/
+	cd "$(LFS_PYTHON_MESON_SRC_DIR)" && \
+		pip3 wheel -w dist \
+			--no-build-isolation \
+			--no-cache-dir \
+			--no-deps $$PWD && \
+		pip3 install --no-index --find-links dist meson
+	rm -rf "$(LFS_PYTHON_MESON_SRC_DIR)"
+
 python-clean:
 	rm -rf "$(LFS_PYTHON_SRC_DIR)"
 	rm -rf "$(LFS_PYTHON_FLIT_CORE_SRC_DIR)"
 	rm -rf "$(LFS_PYTHON_PACKAGING_SRC_DIR)"
 	rm -rf "$(LFS_PYTHON_WHEEL_SRC_DIR)"
 	rm -rf "$(LFS_PYTHON_SETUPTOOLS_SRC_DIR)"
+	rm -rf "$(LFS_PYTHON_MESON_SRC_DIR)"

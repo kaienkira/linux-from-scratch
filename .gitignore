@@ -27,6 +27,8 @@
 /src/gzip-*
 /src/htop-*
 /src/iana-etc-*
+/src/iproute2-*
+/src/kmod-*
 /src/less-*
 /src/libcap-*
 /src/libffi-*
