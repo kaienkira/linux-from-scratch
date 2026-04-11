@@ -85,7 +85,7 @@ download_file 'https://github.com/tukaani-project/xz/releases/download/v5.8.2/xz
 download_file 'https://ftp.gnu.org/gnu/gettext/gettext-1.0.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/bison/bison-3.8.2.tar.xz'
 download_file 'https://www.cpan.org/src/5.0/perl-5.42.0.tar.xz'
-download_file 'https://www.python.org/ftp/python/3.14.3/Python-3.14.3.tar.xz'
+download_file 'https://www.python.org/ftp/python/3.14.4/Python-3.14.4.tar.xz'
 download_file 'https://pypi.org/packages/source/f/flit-core/flit_core-3.12.0.tar.gz'
 download_file 'https://pypi.org/packages/source/p/packaging/packaging-26.0.tar.gz'
 download_file 'https://pypi.org/packages/source/w/wheel/wheel-0.46.3.tar.gz'
