@@ -5,6 +5,7 @@ LFS_LINUX_SRC_DIR = $(abspath src/linux-$(LFS_LINUX_VERSION))
 .PHONY: \
 linux-extract-src \
 linux-build-p1-headers \
+linux-build \
 linux-clean
 
 linux-extract-src:
@@ -20,6 +21,17 @@ linux-build-p1-headers:
 		-type f ! -name '*.h' -delete
 	cp -r "$(LFS_LINUX_SRC_DIR)"/build/usr/include/* \
 		"$(LFS_ROOT_DIR)"/usr/include/
+	rm -rf "$(LFS_LINUX_SRC_DIR)"
+
+linux-build:
+	$(MAKE) linux-extract-src
+	mkdir -p "$(LFS_LINUX_SRC_DIR)"/build
+	cd "$(LFS_LINUX_SRC_DIR)"&& \
+		make mrproper && \
+		make O=build defconfig && \
+		make O=build bzImage modules -j$(NPROC) && \
+		make O=build modules_install && \
+		cp build/arch/x86/boot/bzImage /boot/vmlinuz
 	rm -rf "$(LFS_LINUX_SRC_DIR)"
 
 linux-clean:
