@@ -22,12 +22,15 @@
 /src/gettext-*
 /src/glibc-*
 /src/gmp-*
+/src/gperf-*
 /src/grep-*
 /src/groff-*
 /src/gzip-*
 /src/htop-*
 /src/iana-etc-*
 /src/iproute2-*
+/src/jinja2-*
+/src/kbd-*
 /src/kmod-*
 /src/less-*
 /src/libcap-*
@@ -41,6 +44,7 @@
 /src/m4-*
 /src/make-*
 /src/man-pages-*
+/src/markupsafe-*
 /src/meson-*
 /src/mpc-*
 /src/mpfr-*
@@ -59,6 +63,7 @@
 /src/setuptools-*
 /src/sqlite-*
 /src/shadow-*
+/src/systemd-*
 /src/tar-*
 /src/texinfo-*
 /src/tzdata*

@@ -22,6 +22,14 @@ LFS_PYTHON_MESON_VERSION = 1.10.2
 LFS_PYTHON_MESON_SRC_TAR = $(abspath src/meson-$(LFS_PYTHON_MESON_VERSION).tar.gz)
 LFS_PYTHON_MESON_SRC_DIR = $(abspath src/meson-$(LFS_PYTHON_MESON_VERSION))
 
+LFS_PYTHON_MARKUPSAFE_VERSION = 3.0.3
+LFS_PYTHON_MARKUPSAFE_SRC_TAR = $(abspath src/markupsafe-$(LFS_PYTHON_MARKUPSAFE_VERSION).tar.gz)
+LFS_PYTHON_MARKUPSAFE_SRC_DIR = $(abspath src/markupsafe-$(LFS_PYTHON_MARKUPSAFE_VERSION))
+
+LFS_PYTHON_JINJA2_VERSION = 3.1.6
+LFS_PYTHON_JINJA2_SRC_TAR = $(abspath src/jinja2-$(LFS_PYTHON_JINJA2_VERSION).tar.gz)
+LFS_PYTHON_JINJA2_SRC_DIR = $(abspath src/jinja2-$(LFS_PYTHON_JINJA2_VERSION))
+
 .PHONY: \
 python-extract-src \
 python-build-chroot-p1 \
@@ -31,6 +39,8 @@ python-packaging-build \
 python-wheel-build \
 python-setuptools-build \
 python-meson-build \
+python-markupsafe-build \
+python-jinja2-build \
 python-clean
 
 python-extract-src:
@@ -121,6 +131,28 @@ python-meson-build:
 		pip3 install --no-index --find-links dist meson
 	rm -rf "$(LFS_PYTHON_MESON_SRC_DIR)"
 
+python-markupsafe-build:
+	rm -rf "$(LFS_PYTHON_MARKUPSAFE_SRC_DIR)"
+	tar -xvf "$(LFS_PYTHON_MARKUPSAFE_SRC_TAR)" -C src/
+	cd "$(LFS_PYTHON_MARKUPSAFE_SRC_DIR)" && \
+		pip3 wheel -w dist \
+			--no-build-isolation \
+			--no-cache-dir \
+			--no-deps $$PWD && \
+		pip3 install --no-index --find-links dist markupsafe
+	rm -rf "$(LFS_PYTHON_MARKUPSAFE_SRC_DIR)"
+
+python-jinja2-build:
+	rm -rf "$(LFS_PYTHON_JINJA2_SRC_DIR)"
+	tar -xvf "$(LFS_PYTHON_JINJA2_SRC_TAR)" -C src/
+	cd "$(LFS_PYTHON_JINJA2_SRC_DIR)" && \
+		pip3 wheel -w dist \
+			--no-build-isolation \
+			--no-cache-dir \
+			--no-deps $$PWD && \
+		pip3 install --no-index --find-links dist jinja2
+	rm -rf "$(LFS_PYTHON_JINJA2_SRC_DIR)"
+
 python-clean:
 	rm -rf "$(LFS_PYTHON_SRC_DIR)"
 	rm -rf "$(LFS_PYTHON_FLIT_CORE_SRC_DIR)"
@@ -128,3 +160,5 @@ python-clean:
 	rm -rf "$(LFS_PYTHON_WHEEL_SRC_DIR)"
 	rm -rf "$(LFS_PYTHON_SETUPTOOLS_SRC_DIR)"
 	rm -rf "$(LFS_PYTHON_MESON_SRC_DIR)"
+	rm -rf "$(LFS_PYTHON_MARKUPSAFE_SRC_DIR)"
+	rm -rf "$(LFS_PYTHON_JINJA2_SRC_DIR)"

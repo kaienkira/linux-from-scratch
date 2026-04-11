@@ -54,6 +54,7 @@ grep-build \
 bash-build \
 libtool-build \
 gdbm-build \
+gperf-build \
 expat-build \
 less-build \
 perl-build \
@@ -70,6 +71,8 @@ python-wheel-build \
 python-setuptools-build \
 ninja-build \
 python-meson-build \
+python-markupsafe-build \
+python-jinja2-build \
 coreutils-build \
 diffutils-build \
 gawk-build \
@@ -85,6 +88,8 @@ util-linux-build \
 vim-build \
 kmod-build \
 iproute2-build \
+kbd-build \
+systemd-build \
 libnl-build \
 htop-build \
 tree-build \
@@ -126,6 +131,7 @@ grep-clean \
 bash-clean \
 libtool-clean \
 gdbm-clean \
+gperf-clean \
 expat-clean \
 less-clean \
 perl-clean \
@@ -152,6 +158,8 @@ util-linux-clean \
 vim-clean \
 kmod-clean \
 iproute2-clean \
+kbd-clean \
+systemd-clean \
 libnl-clean \
 htop-clean \
 tree-clean
@@ -199,6 +207,7 @@ include mak/grep.mak
 include mak/bash.mak
 include mak/libtool.mak
 include mak/gdbm.mak
+include mak/gperf.mak
 include mak/expat.mak
 include mak/less.mak
 include mak/perl.mak
@@ -225,6 +234,8 @@ include mak/util_linux.mak
 include mak/vim.mak
 include mak/kmod.mak
 include mak/iproute2.mak
+include mak/kbd.mak
+include mak/systemd.mak
 include mak/libnl.mak
 include mak/htop.mak
 include mak/tree.mak
