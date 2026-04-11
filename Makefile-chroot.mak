@@ -90,6 +90,7 @@ kmod-build \
 iproute2-build \
 kbd-build \
 systemd-build \
+dbus-build \
 libnl-build \
 htop-build \
 tree-build \
@@ -160,6 +161,7 @@ kmod-clean \
 iproute2-clean \
 kbd-clean \
 systemd-clean \
+dbus-clean \
 libnl-clean \
 htop-clean \
 tree-clean
@@ -236,6 +238,7 @@ include mak/kmod.mak
 include mak/iproute2.mak
 include mak/kbd.mak
 include mak/systemd.mak
+include mak/dbus.mak
 include mak/libnl.mak
 include mak/htop.mak
 include mak/tree.mak

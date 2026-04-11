@@ -134,6 +134,7 @@ download_file 'https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.19
 download_file 'https://www.kernel.org/pub/linux/utils/kbd/kbd-2.9.0.tar.xz'
 download_patch 'https://www.linuxfromscratch.org/patches/lfs/13.0/kbd-2.9.0-backspace-1.patch'
 download_file 'https://github.com/systemd/systemd/archive/v260.1/systemd-260.1.tar.gz'
+download_file 'https://dbus.freedesktop.org/releases/dbus/dbus-1.16.2.tar.xz'
 download_file 'https://github.com/thom311/libnl/releases/download/libnl3_12_0/libnl-3.12.0.tar.gz'
 download_file 'https://github.com/htop-dev/htop/releases/download/3.4.1/htop-3.4.1.tar.xz'
 download_file 'https://gitlab.com/OldManProgrammer/unix-tree/-/archive/2.3.2/unix-tree-2.3.2.tar.gz'

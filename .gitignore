@@ -9,6 +9,7 @@
 /src/bison-*
 /src/bzip2-*
 /src/coreutils-*
+/src/dbus-*
 /src/diffutils-*
 /src/elfutils-*
 /src/expat-*
