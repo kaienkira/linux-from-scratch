@@ -1,4 +1,4 @@
-LFS_LINUX_VERSION = 6.18.21
+LFS_LINUX_VERSION = 6.18.22
 LFS_LINUX_SRC_TAR = $(abspath src/linux-$(LFS_LINUX_VERSION).tar.xz)
 LFS_LINUX_SRC_DIR = $(abspath src/linux-$(LFS_LINUX_VERSION))
 
@@ -31,7 +31,8 @@ linux-build:
 		make O=build defconfig && \
 		make O=build bzImage modules -j$(NPROC) && \
 		make O=build modules_install && \
-		cp build/arch/x86/boot/bzImage /boot/vmlinuz
+		cp build/arch/x86/boot/bzImage /boot/vmlinuz && \
+		cp build/.config /boot/config
 	rm -rf "$(LFS_LINUX_SRC_DIR)"
 
 linux-clean:

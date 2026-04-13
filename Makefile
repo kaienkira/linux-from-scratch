@@ -19,7 +19,8 @@ clean-lfs-temp-tools \
 copy-src-to-lfs-root \
 copy-config-files \
 chroot \
-unchroot
+unchroot \
+run
 
 default: download-source
 
@@ -164,6 +165,16 @@ unchroot:
 	@sudo chown -h `id -un`:`id -g` $(LFS_ROOT_DIR)/{bin,lib,lib64,sbin}
 	@sudo chown `id -un`:`id -g` $(LFS_ROOT_DIR)/{home,mnt,tmp}
 	@sudo chown `id -un`:`id -g` $(LFS_ROOT_DIR)/{dev,proc,run,sys}
+
+run:
+	qemu-system-x86_64 \
+		-enable-kvm \
+		-m 1G \
+		-nographic \
+		-kernel $(LFS_ROOT_DIR)/boot/vmlinuz \
+		-append 'root=/dev/root rootfstype=9p rootflags=trans=virtio,version=9p2000.L console=ttyS0' \
+		-fsdev local,id=rootdev,path="$(LFS_ROOT_DIR)",security_model=none \
+		-device virtio-9p-pci,fsdev=rootdev,mount_tag=/dev/root
 
 include mak/binutils.mak
 include mak/gmp.mak
