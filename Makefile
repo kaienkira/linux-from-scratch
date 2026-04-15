@@ -134,6 +134,7 @@ copy-config-files:
 	cp etc/ld.so.conf "$(LFS_ROOT_DIR)/etc/ld.so.conf"
 	cp etc/nsswitch.conf "$(LFS_ROOT_DIR)"/etc/nsswitch.conf
 	cp etc/pip.conf "$(LFS_ROOT_DIR)"/etc/pip.conf
+	cp etc/profile "$(LFS_ROOT_DIR)"/etc/profile
 
 chroot:
 	@sudo echo "chroot"

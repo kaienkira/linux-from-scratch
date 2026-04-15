@@ -19,6 +19,7 @@
 /src/flit_core-*
 /src/gawk-*
 /src/gcc-*
+/src/gcc_patch-*
 /src/gdbm-*
 /src/gettext-*
 /src/glibc-*

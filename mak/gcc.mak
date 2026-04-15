@@ -1,6 +1,8 @@
 LFS_GCC_VERSION = 15.2.0
+LFS_GCC_PATCH_VERSION = 5
 LFS_GCC_SRC_TAR = $(abspath src/gcc-$(LFS_GCC_VERSION).tar.xz)
 LFS_GCC_SRC_DIR = $(abspath src/gcc-$(LFS_GCC_VERSION))
+LFS_GCC_PATCH_TAR = $(abspath src/gcc_patch-$(LFS_GCC_VERSION)-$(LFS_GCC_PATCH_VERSION).tar.xz)
 
 # __cxa_atexit -> -fuse-cxa-atexit
 # cet -> -fcf-protection=full
@@ -14,6 +16,7 @@ LFS_GCC_SRC_DIR = $(abspath src/gcc-$(LFS_GCC_VERSION))
 
 .PHONY: \
 gcc-extract-src \
+gcc-extract-dep \
 gcc-build-p1 \
 gcc-build-p1-libstdcxx \
 gcc-build-p2 \
@@ -23,6 +26,14 @@ gcc-clean
 gcc-extract-src:
 	rm -rf "$(LFS_GCC_SRC_DIR)"
 	tar -xvf "$(LFS_GCC_SRC_TAR)" -C src/
+	tar -xvf "$(LFS_GCC_PATCH_TAR)" -C "$(LFS_GCC_SRC_DIR)"
+	for f in `ls $(LFS_GCC_SRC_DIR)/patches/*.patch`; \
+	do \
+		patch -d "$(LFS_GCC_SRC_DIR)" -N -p1 -i $$f; \
+		if [ $$? -ne 0 ]; then exit 1; fi; \
+	done
+
+gcc-extract-dep:
 	tar -xvf "$(LFS_GMP_SRC_TAR)" -C "$(LFS_GCC_SRC_DIR)"
 	mv "$(LFS_GCC_SRC_DIR)/gmp-$(LFS_GMP_VERSION)" "$(LFS_GCC_SRC_DIR)/gmp"
 	tar -xvf "$(LFS_MPFR_SRC_TAR)" -C "$(LFS_GCC_SRC_DIR)"
@@ -32,6 +43,7 @@ gcc-extract-src:
 
 gcc-build-p1:
 	$(MAKE) gcc-extract-src
+	$(MAKE) gcc-extract-dep
 	cd "$(LFS_GCC_SRC_DIR)" && \
 		sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 	mkdir -p "$(LFS_GCC_SRC_DIR)"/build
@@ -67,6 +79,7 @@ gcc-build-p1:
 
 gcc-build-p1-libstdcxx:
 	$(MAKE) gcc-extract-src
+	$(MAKE) gcc-extract-dep
 	mkdir -p "$(LFS_GCC_SRC_DIR)"/build
 	cd "$(LFS_GCC_SRC_DIR)"/build && \
 		../libstdc++-v3/configure \
@@ -88,6 +101,7 @@ gcc-build-p1-libstdcxx:
 
 gcc-build-p2:
 	$(MAKE) gcc-extract-src
+	$(MAKE) gcc-extract-dep
 	cd "$(LFS_GCC_SRC_DIR)" && \
 		sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64 && \
 		sed -i '/thread_header =/s/@.*@/gthr-posix.h/' \
