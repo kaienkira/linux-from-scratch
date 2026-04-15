@@ -167,13 +167,14 @@ unchroot:
 	@sudo chown `id -un`:`id -g` $(LFS_ROOT_DIR)/{dev,proc,run,sys}
 
 run:
+	unshare --map-auto --map-root-user \
 	qemu-system-x86_64 \
 		-enable-kvm \
 		-m 1G \
 		-nographic \
 		-kernel $(LFS_ROOT_DIR)/boot/vmlinuz \
-		-append 'root=/dev/root rootfstype=9p rootflags=trans=virtio,version=9p2000.L console=ttyS0' \
-		-fsdev local,id=rootdev,path="$(LFS_ROOT_DIR)",security_model=none \
+		-append 'root=/dev/root rootfstype=9p rootflags=trans=virtio,version=9p2000.L rw console=ttyS0' \
+		-fsdev local,id=rootdev,path="$(LFS_ROOT_DIR)",security_model=passthrough \
 		-device virtio-9p-pci,fsdev=rootdev,mount_tag=/dev/root
 
 include mak/binutils.mak
