@@ -1,6 +1,8 @@
 LFS_GLIBC_VERSION = 2.43
+LFS_GLIBC_PATCH_VERSION = 2
 LFS_GLIBC_SRC_TAR = $(abspath src/glibc-$(LFS_GLIBC_VERSION).tar.xz)
 LFS_GLIBC_SRC_DIR = $(abspath src/glibc-$(LFS_GLIBC_VERSION))
+LFS_GLIBC_PATCH_TAR = $(abspath src/glibc_patch-$(LFS_GLIBC_VERSION)-$(LFS_GLIBC_PATCH_VERSION).tar.xz)
 
 # nscd -> Name Service Cache Daemon
 
@@ -12,7 +14,12 @@ glibc-clean
 glibc-extract-src:
 	rm -rf "$(LFS_GLIBC_SRC_DIR)"
 	tar -xvf "$(LFS_GLIBC_SRC_TAR)" -C src/
-	patch -d "$(LFS_GLIBC_SRC_DIR)" -N -p1 -i ../glibc-fhs-1.patch
+	tar -xvf "$(LFS_GLIBC_PATCH_TAR)" -C "$(LFS_GLIBC_SRC_DIR)"
+	for f in `ls $(LFS_GLIBC_SRC_DIR)/patches/*.patch`; \
+	do \
+		patch -d "$(LFS_GLIBC_SRC_DIR)" -N -p1 -i $$f; \
+		if [ $$? -ne 0 ]; then exit 1; fi; \
+	done
 
 glibc-build-p1:
 	$(MAKE) glibc-extract-src

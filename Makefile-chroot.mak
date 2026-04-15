@@ -95,6 +95,7 @@ linux-build \
 libnl-build \
 htop-build \
 tree-build \
+libunistring-build \
 clean-temp-files
 
 clean: \
@@ -166,7 +167,8 @@ dbus-clean \
 linux-clean \
 libnl-clean \
 htop-clean \
-tree-clean
+tree-clean \
+libunistring-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -245,3 +247,4 @@ include mak/linux.mak
 include mak/libnl.mak
 include mak/htop.mak
 include mak/tree.mak
+include mak/libunistring.mak
