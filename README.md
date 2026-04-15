@@ -13,4 +13,6 @@ make build
 make chroot
 > cd /opt/build
 > make build
+> exit
+make run
 ```
