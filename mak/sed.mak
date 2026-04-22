@@ -1,4 +1,4 @@
-LFS_SED_VERSION = 4.9
+LFS_SED_VERSION = 4.10
 LFS_SED_SRC_TAR = $(abspath src/sed-$(LFS_SED_VERSION).tar.xz)
 LFS_SED_SRC_DIR = $(abspath src/sed-$(LFS_SED_VERSION))
 
