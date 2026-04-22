@@ -48,6 +48,7 @@
 /src/libtool-*
 /src/libunistring-*
 /src/libxcrypt-*
+/src/libxml2-*
 /src/linux-*
 /src/lz4-*
 /src/m4-*

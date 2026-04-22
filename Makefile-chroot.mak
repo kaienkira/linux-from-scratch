@@ -101,6 +101,7 @@ iputils-build \
 libpsl-build \
 curl-build \
 git-build \
+libxml2-build \
 clean-temp-files
 
 clean: \
@@ -178,7 +179,8 @@ libidn2-clean \
 iputils-clean \
 libpsl-clean \
 curl-clean \
-git-clean
+git-clean \
+libxml2-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -263,3 +265,4 @@ include mak/iputils.mak
 include mak/libpsl.mak
 include mak/curl.mak
 include mak/git.mak
+include mak/libxml2.mak

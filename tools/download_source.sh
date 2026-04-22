@@ -145,5 +145,6 @@ download_file 'https://github.com/iputils/iputils/releases/download/20250605/ipu
 download_file 'https://github.com/rockdaboot/libpsl/releases/download/0.21.5/libpsl-0.21.5.tar.gz'
 download_file 'https://curl.se/download/curl-8.19.0.tar.xz'
 download_file 'https://www.kernel.org/pub/software/scm/git/git-2.54.0.tar.xz'
+download_file 'https://download.gnome.org/sources/libxml2/2.15/libxml2-2.15.3.tar.xz'
 
 exit 0
