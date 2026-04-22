@@ -98,6 +98,9 @@ tree-build \
 libunistring-build \
 libidn2-build \
 iputils-build \
+libpsl-build \
+curl-build \
+git-build \
 clean-temp-files
 
 clean: \
@@ -172,7 +175,10 @@ htop-clean \
 tree-clean \
 libunistring-clean \
 libidn2-clean \
-iputils-clean
+iputils-clean \
+libpsl-clean \
+curl-clean \
+git-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*
@@ -254,3 +260,6 @@ include mak/tree.mak
 include mak/libunistring.mak
 include mak/libidn2.mak
 include mak/iputils.mak
+include mak/libpsl.mak
+include mak/curl.mak
+include mak/git.mak

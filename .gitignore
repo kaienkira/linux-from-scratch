@@ -9,6 +9,7 @@
 /src/bison-*
 /src/bzip2-*
 /src/coreutils-*
+/src/curl-*
 /src/dbus-*
 /src/diffutils-*
 /src/elfutils-*
@@ -22,6 +23,7 @@
 /src/gcc_patch-*
 /src/gdbm-*
 /src/gettext-*
+/src/git-*
 /src/glibc-*
 /src/glibc_patch-*
 /src/gmp-*
@@ -42,6 +44,7 @@
 /src/libidn2-*
 /src/libnl-*
 /src/libpipeline-*
+/src/libpsl-*
 /src/libtool-*
 /src/libunistring-*
 /src/libxcrypt-*

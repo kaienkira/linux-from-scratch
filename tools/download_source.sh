@@ -71,7 +71,7 @@ download_patch 'https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/b4/glibc-2
 download_file 'https://ftp.gnu.org/gnu/m4/m4-1.4.21.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/ncurses/ncurses-6.6.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/bash/bash-5.3.tar.gz'
-download_file 'https://ftp.gnu.org/gnu/coreutils/coreutils-9.10.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/coreutils/coreutils-9.11.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/diffutils/diffutils-3.12.tar.xz'
 download_file 'https://astron.com/pub/file/file-5.47.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/findutils/findutils-4.10.0.tar.xz'
@@ -142,5 +142,8 @@ download_file 'https://gitlab.com/OldManProgrammer/unix-tree/-/archive/2.3.2/uni
 download_file 'https://ftp.gnu.org/gnu/libunistring/libunistring-1.4.2.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/libidn/libidn2-2.3.8.tar.gz'
 download_file 'https://github.com/iputils/iputils/releases/download/20250605/iputils-20250605.tar.xz'
+download_file 'https://github.com/rockdaboot/libpsl/releases/download/0.21.5/libpsl-0.21.5.tar.gz'
+download_file 'https://curl.se/download/curl-8.19.0.tar.xz'
+download_file 'https://www.kernel.org/pub/software/scm/git/git-2.54.0.tar.xz'
 
 exit 0
