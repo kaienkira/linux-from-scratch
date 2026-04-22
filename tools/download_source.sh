@@ -141,5 +141,6 @@ download_file 'https://github.com/htop-dev/htop/releases/download/3.4.1/htop-3.4
 download_file 'https://gitlab.com/OldManProgrammer/unix-tree/-/archive/2.3.2/unix-tree-2.3.2.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/libunistring/libunistring-1.4.2.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/libidn/libidn2-2.3.8.tar.gz'
+download_file 'https://github.com/iputils/iputils/releases/download/20250605/iputils-20250605.tar.xz'
 
 exit 0

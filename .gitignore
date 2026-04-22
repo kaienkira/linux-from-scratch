@@ -32,6 +32,7 @@
 /src/htop-*
 /src/iana-etc-*
 /src/iproute2-*
+/src/iputils-*
 /src/jinja2-*
 /src/kbd-*
 /src/kmod-*
