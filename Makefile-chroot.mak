@@ -4,183 +4,184 @@ NPROC = $(shell expr `nproc` - 1)
 default \
 build \
 clean \
-clean-p1-temp-files
+clean-p1-temp-files \
+init-env
 
 default:
 
-build: \
-gettext-build-chroot-p1 \
-bison-build-chroot-p1 \
-perl-build-chroot-p1 \
-python-build-chroot-p1 \
-texinfo-build-chroot-p1 \
-util-linux-build-chroot-p1 \
-clean-p1-temp-files \
-build-world
+build:
+	$(MAKE) gettext-build-chroot-p1
+	$(MAKE) bison-build-chroot-p1
+	$(MAKE) perl-build-chroot-p1
+	$(MAKE) python-build-chroot-p1
+	$(MAKE) texinfo-build-chroot-p1
+	$(MAKE) util-linux-build-chroot-p1
+	$(MAKE) clean-p1-temp-files
+	$(MAKE) build-world
 
-build-world: \
-man-pages-build \
-iana-etc-build \
-glibc-build \
-tzdata-build \
-zlib-build \
-bzip2-build \
-xz-build \
-lz4-build \
-zstd-build \
-file-build \
-readline-build \
-pcre2-build \
-m4-build \
-bc-build \
-flex-build \
-pkgconf-build \
-binutils-build \
-gmp-build \
-mpfr-build \
-mpc-build \
-attr-build \
-acl-build \
-libcap-build \
-libxcrypt-build \
-shadow-build \
-gcc-build \
-ncurses-build \
-sed-build \
-psmisc-build \
-gettext-build \
-bison-build \
-grep-build \
-bash-build \
-libtool-build \
-gdbm-build \
-gperf-build \
-expat-build \
-less-build \
-perl-build \
-autoconf-build \
-automake-build \
-openssl-build \
-elfutils-build \
-libffi-build \
-sqlite-build \
-python-build \
-python-flit-core-build \
-python-packaging-build \
-python-wheel-build \
-python-setuptools-build \
-ninja-build \
-python-meson-build \
-python-markupsafe-build \
-python-jinja2-build \
-coreutils-build \
-diffutils-build \
-gawk-build \
-findutils-build \
-groff-build \
-gzip-build \
-libpipeline-build \
-make-build \
-patch-build \
-tar-build \
-texinfo-build \
-util-linux-build \
-vim-build \
-kmod-build \
-iproute2-build \
-kbd-build \
-systemd-build \
-dbus-build \
-linux-build \
-libnl-build \
-htop-build \
-tree-build \
-libunistring-build \
-libidn2-build \
-iputils-build \
-libpsl-build \
-curl-build \
-git-build \
-libxml2-build \
-clean-temp-files
+build-world:
+	$(MAKE) man-pages-build
+	$(MAKE) iana-etc-build
+	$(MAKE) glibc-build
+	$(MAKE) tzdata-build
+	$(MAKE) zlib-build
+	$(MAKE) bzip2-build
+	$(MAKE) xz-build
+	$(MAKE) lz4-build
+	$(MAKE) zstd-build
+	$(MAKE) file-build
+	$(MAKE) readline-build
+	$(MAKE) pcre2-build
+	$(MAKE) m4-build
+	$(MAKE) bc-build
+	$(MAKE) flex-build
+	$(MAKE) pkgconf-build
+	$(MAKE) binutils-build
+	$(MAKE) gmp-build
+	$(MAKE) mpfr-build
+	$(MAKE) mpc-build
+	$(MAKE) attr-build
+	$(MAKE) acl-build
+	$(MAKE) libcap-build
+	$(MAKE) libxcrypt-build
+	$(MAKE) shadow-build
+	$(MAKE) gcc-build
+	$(MAKE) ncurses-build
+	$(MAKE) sed-build
+	$(MAKE) psmisc-build
+	$(MAKE) gettext-build
+	$(MAKE) bison-build
+	$(MAKE) grep-build
+	$(MAKE) bash-build
+	$(MAKE) libtool-build
+	$(MAKE) gdbm-build
+	$(MAKE) gperf-build
+	$(MAKE) expat-build
+	$(MAKE) less-build
+	$(MAKE) perl-build
+	$(MAKE) autoconf-build
+	$(MAKE) automake-build
+	$(MAKE) openssl-build
+	$(MAKE) elfutils-build
+	$(MAKE) libffi-build
+	$(MAKE) sqlite-build
+	$(MAKE) python-build
+	$(MAKE) python-flit-core-build
+	$(MAKE) python-packaging-build
+	$(MAKE) python-wheel-build
+	$(MAKE) python-setuptools-build
+	$(MAKE) ninja-build
+	$(MAKE) python-meson-build
+	$(MAKE) python-markupsafe-build
+	$(MAKE) python-jinja2-build
+	$(MAKE) coreutils-build
+	$(MAKE) diffutils-build
+	$(MAKE) gawk-build
+	$(MAKE) findutils-build
+	$(MAKE) groff-build
+	$(MAKE) gzip-build
+	$(MAKE) libpipeline-build
+	$(MAKE) make-build
+	$(MAKE) patch-build
+	$(MAKE) tar-build
+	$(MAKE) texinfo-build
+	$(MAKE) util-linux-build
+	$(MAKE) vim-build
+	$(MAKE) kmod-build
+	$(MAKE) iproute2-build
+	$(MAKE) kbd-build
+	$(MAKE) systemd-build
+	$(MAKE) dbus-build
+	$(MAKE) linux-build
+	$(MAKE) libnl-build
+	$(MAKE) htop-build
+	$(MAKE) tree-build
+	$(MAKE) libunistring-build
+	$(MAKE) libidn2-build
+	$(MAKE) iputils-build
+	$(MAKE) libpsl-build
+	$(MAKE) curl-build
+	$(MAKE) git-build
+	$(MAKE) libxml2-build
+	$(MAKE) clean-temp-files
 
-clean: \
-man-pages-clean \
-iana-etc-clean \
-glibc-clean \
-tzdata-clean \
-zlib-clean \
-bzip2-clean \
-xz-clean \
-lz4-clean \
-zstd-clean \
-file-clean \
-readline-clean \
-pcre2-clean \
-m4-clean \
-bc-clean \
-flex-clean \
-pkgconf-clean \
-binutils-clean \
-gmp-clean \
-mpfr-clean \
-mpc-clean \
-attr-clean \
-acl-clean \
-libcap-clean \
-libxcrypt-clean \
-shadow-clean \
-gcc-clean \
-ncurses-clean \
-sed-clean \
-psmisc-clean \
-gettext-clean \
-bison-clean \
-grep-clean \
-bash-clean \
-libtool-clean \
-gdbm-clean \
-gperf-clean \
-expat-clean \
-less-clean \
-perl-clean \
-autoconf-clean \
-automake-clean \
-openssl-clean \
-elfutils-clean \
-libffi-clean \
-sqlite-clean \
-python-clean \
-ninja-clean \
-coreutils-clean \
-diffutils-clean \
-gawk-clean \
-findutils-clean \
-groff-clean \
-gzip-clean \
-libpipeline-clean \
-make-clean \
-patch-clean \
-tar-clean \
-texinfo-clean \
-util-linux-clean \
-vim-clean \
-kmod-clean \
-iproute2-clean \
-kbd-clean \
-systemd-clean \
-dbus-clean \
-linux-clean \
-libnl-clean \
-htop-clean \
-tree-clean \
-libunistring-clean \
-libidn2-clean \
-iputils-clean \
-libpsl-clean \
-curl-clean \
-git-clean \
-libxml2-clean
+clean:
+	$(MAKE) man-pages-clean
+	$(MAKE) iana-etc-clean
+	$(MAKE) glibc-clean
+	$(MAKE) tzdata-clean
+	$(MAKE) zlib-clean
+	$(MAKE) bzip2-clean
+	$(MAKE) xz-clean
+	$(MAKE) lz4-clean
+	$(MAKE) zstd-clean
+	$(MAKE) file-clean
+	$(MAKE) readline-clean
+	$(MAKE) pcre2-clean
+	$(MAKE) m4-clean
+	$(MAKE) bc-clean
+	$(MAKE) flex-clean
+	$(MAKE) pkgconf-clean
+	$(MAKE) binutils-clean
+	$(MAKE) gmp-clean
+	$(MAKE) mpfr-clean
+	$(MAKE) mpc-clean
+	$(MAKE) attr-clean
+	$(MAKE) acl-clean
+	$(MAKE) libcap-clean
+	$(MAKE) libxcrypt-clean
+	$(MAKE) shadow-clean
+	$(MAKE) gcc-clean
+	$(MAKE) ncurses-clean
+	$(MAKE) sed-clean
+	$(MAKE) psmisc-clean
+	$(MAKE) gettext-clean
+	$(MAKE) bison-clean
+	$(MAKE) grep-clean
+	$(MAKE) bash-clean
+	$(MAKE) libtool-clean
+	$(MAKE) gdbm-clean
+	$(MAKE) gperf-clean
+	$(MAKE) expat-clean
+	$(MAKE) less-clean
+	$(MAKE) perl-clean
+	$(MAKE) autoconf-clean
+	$(MAKE) automake-clean
+	$(MAKE) openssl-clean
+	$(MAKE) elfutils-clean
+	$(MAKE) libffi-clean
+	$(MAKE) sqlite-clean
+	$(MAKE) python-clean
+	$(MAKE) ninja-clean
+	$(MAKE) coreutils-clean
+	$(MAKE) diffutils-clean
+	$(MAKE) gawk-clean
+	$(MAKE) findutils-clean
+	$(MAKE) groff-clean
+	$(MAKE) gzip-clean
+	$(MAKE) libpipeline-clean
+	$(MAKE) make-clean
+	$(MAKE) patch-clean
+	$(MAKE) tar-clean
+	$(MAKE) texinfo-clean
+	$(MAKE) util-linux-clean
+	$(MAKE) vim-clean
+	$(MAKE) kmod-clean
+	$(MAKE) iproute2-clean
+	$(MAKE) kbd-clean
+	$(MAKE) systemd-clean
+	$(MAKE) dbus-clean
+	$(MAKE) linux-clean
+	$(MAKE) libnl-clean
+	$(MAKE) htop-clean
+	$(MAKE) tree-clean
+	$(MAKE) libunistring-clean
+	$(MAKE) libidn2-clean
+	$(MAKE) iputils-clean
+	$(MAKE) libpsl-clean
+	$(MAKE) curl-clean
+	$(MAKE) git-clean
+	$(MAKE) libxml2-clean
 
 clean-p1-temp-files:
 	rm -rf /usr/share/{doc,info,man}/*

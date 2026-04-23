@@ -27,56 +27,56 @@ default: download-source
 download-source:
 	bash tools/download_source.sh
 
-build: \
-create-lfs-root-dir \
-create-lfs-temp-tools \
-binutils-build-p1 \
-gcc-build-p1 \
-linux-build-p1-headers \
-glibc-build-p1 \
-gcc-build-p1-libstdcxx \
-m4-build-p1 \
-ncurses-build-p1 \
-bash-build-p1 \
-coreutils-build-p1 \
-diffutils-build-p1 \
-file-build-p1 \
-findutils-build-p1 \
-gawk-build-p1 \
-grep-build-p1 \
-gzip-build-p1 \
-make-build-p1 \
-patch-build-p1 \
-sed-build-p1 \
-tar-build-p1 \
-xz-build-p1 \
-binutils-build-p2 \
-gcc-build-p2 \
-copy-src-to-lfs-root \
-copy-config-files \
-clean-lfs-temp-tools
+build:
+	$(MAKE) create-lfs-root-dir
+	$(MAKE) create-lfs-temp-tools
+	$(MAKE) binutils-build-p1
+	$(MAKE) gcc-build-p1
+	$(MAKE) linux-build-p1-headers
+	$(MAKE) glibc-build-p1
+	$(MAKE) gcc-build-p1-libstdcxx
+	$(MAKE) m4-build-p1
+	$(MAKE) ncurses-build-p1
+	$(MAKE) bash-build-p1
+	$(MAKE) coreutils-build-p1
+	$(MAKE) diffutils-build-p1
+	$(MAKE) file-build-p1
+	$(MAKE) findutils-build-p1
+	$(MAKE) gawk-build-p1
+	$(MAKE) grep-build-p1
+	$(MAKE) gzip-build-p1
+	$(MAKE) make-build-p1
+	$(MAKE) patch-build-p1
+	$(MAKE) sed-build-p1
+	$(MAKE) tar-build-p1
+	$(MAKE) xz-build-p1
+	$(MAKE) binutils-build-p2
+	$(MAKE) gcc-build-p2
+	$(MAKE) copy-src-to-lfs-root
+	$(MAKE) copy-config-files
+	$(MAKE) clean-lfs-temp-tools
 
-clean: \
-clean-lfs-root-dir \
-binutils-clean \
-gcc-clean \
-glibc-clean \
-linux-clean \
-m4-clean \
-ncurses-clean \
-bash-clean \
-coreutils-clean \
-diffutils-clean \
-file-clean \
-findutils-clean \
-gawk-clean \
-grep-clean \
-gzip-clean \
-make-clean \
-patch-clean \
-sed-clean \
-tar-clean \
-xz-clean
+clean:
+	$(MAKE) clean-lfs-root-dir
+	$(MAKE) binutils-clean
+	$(MAKE) gcc-clean
+	$(MAKE) glibc-clean
+	$(MAKE) linux-clean
+	$(MAKE) m4-clean
+	$(MAKE) ncurses-clean
+	$(MAKE) bash-clean
+	$(MAKE) coreutils-clean
+	$(MAKE) diffutils-clean
+	$(MAKE) file-clean
+	$(MAKE) findutils-clean
+	$(MAKE) gawk-clean
+	$(MAKE) grep-clean
+	$(MAKE) gzip-clean
+	$(MAKE) make-clean
+	$(MAKE) patch-clean
+	$(MAKE) sed-clean
+	$(MAKE) tar-clean
+	$(MAKE) xz-clean
 
 create-lfs-root-dir:
 	mkdir -p "$(LFS_ROOT_DIR)"
@@ -113,6 +113,7 @@ create-lfs-root-dir:
 		ln -sfn ../run/lock lock
 
 clean-lfs-root-dir:
+	unshare --map-auto --map-root-user \
 	rm -rf "$(LFS_ROOT_DIR)"
 
 create-lfs-temp-tools:
