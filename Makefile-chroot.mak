@@ -190,6 +190,11 @@ clean-temp-files:
 	find /usr/lib /usr/libexec -name \*.la -delete
 	find /usr -depth -name $$(uname -m)-lfs-linux-gnu\* | xargs rm -rf
 
+init-env:
+	printf '[Match]\nName=en*\n\n[Network]\nDHCP=ipv4\n' \
+		>/etc/systemd/network/10-wired.network
+	ln -rsf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
 include mak/man_pages.mak
 include mak/iana_etc.mak
 include mak/glibc.mak

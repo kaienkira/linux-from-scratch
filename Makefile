@@ -171,7 +171,10 @@ run:
 	unshare --map-auto --map-root-user \
 	qemu-system-x86_64 \
 		-enable-kvm \
-		-m 1G \
+		-m 2048 \
+		-smp 4 \
+		-cpu host \
+		-nic user,model=virtio \
 		-nographic \
 		-kernel $(LFS_ROOT_DIR)/boot/vmlinuz \
 		-append 'root=/dev/root rootfstype=9p rootflags=trans=virtio,version=9p2000.L rw console=ttyS0' \
