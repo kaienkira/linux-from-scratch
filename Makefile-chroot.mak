@@ -104,6 +104,7 @@ build-world:
 	$(MAKE) git-build
 	$(MAKE) libxml2-build
 	$(MAKE) clean-temp-files
+	$(MAKE) init-env
 
 clean:
 	$(MAKE) man-pages-clean
