@@ -93,6 +93,7 @@ build-world:
 	$(MAKE) systemd-build
 	$(MAKE) dbus-build
 	$(MAKE) linux-build
+	$(MAKE) libtasn1-build
 	$(MAKE) libnl-build
 	$(MAKE) htop-build
 	$(MAKE) tree-build
@@ -173,6 +174,7 @@ clean:
 	$(MAKE) systemd-clean
 	$(MAKE) dbus-clean
 	$(MAKE) linux-clean
+	$(MAKE) libtasn1-clean
 	$(MAKE) libnl-clean
 	$(MAKE) htop-clean
 	$(MAKE) tree-clean
@@ -263,6 +265,8 @@ include mak/kbd.mak
 include mak/systemd.mak
 include mak/dbus.mak
 include mak/linux.mak
+
+include mak/libtasn1.mak
 include mak/libnl.mak
 include mak/htop.mak
 include mak/tree.mak

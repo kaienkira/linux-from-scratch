@@ -45,6 +45,7 @@
 /src/libnl-*
 /src/libpipeline-*
 /src/libpsl-*
+/src/libtasn1-*
 /src/libtool-*
 /src/libunistring-*
 /src/libxcrypt-*
