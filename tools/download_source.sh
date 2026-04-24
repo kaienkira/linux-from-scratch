@@ -138,6 +138,8 @@ download_file 'https://github.com/systemd/systemd/archive/v260.1/systemd-260.1.t
 download_file 'https://dbus.freedesktop.org/releases/dbus/dbus-1.16.2.tar.xz'
 
 download_file 'https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.21.0.tar.gz'
+download_file 'https://github.com/lfs-book/make-ca/archive/v1.16.1/make-ca-1.16.1.tar.gz' 'make_ca-1.16.1.tar.gz'
+download_file 'https://github.com/p11-glue/p11-kit/releases/download/0.26.2/p11-kit-0.26.2.tar.xz'
 download_file 'https://github.com/thom311/libnl/releases/download/libnl3_12_0/libnl-3.12.0.tar.gz'
 download_file 'https://github.com/htop-dev/htop/releases/download/3.4.1/htop-3.4.1.tar.xz'
 download_file 'https://gitlab.com/OldManProgrammer/unix-tree/-/archive/2.3.2/unix-tree-2.3.2.tar.gz'

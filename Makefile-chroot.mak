@@ -94,6 +94,8 @@ build-world:
 	$(MAKE) dbus-build
 	$(MAKE) linux-build
 	$(MAKE) libtasn1-build
+	$(MAKE) p11-kit-build
+	$(MAKE) make-ca-build
 	$(MAKE) libnl-build
 	$(MAKE) htop-build
 	$(MAKE) tree-build
@@ -175,6 +177,8 @@ clean:
 	$(MAKE) dbus-clean
 	$(MAKE) linux-clean
 	$(MAKE) libtasn1-clean
+	$(MAKE) p11-kit-clean
+	$(MAKE) make-ca-clean
 	$(MAKE) libnl-clean
 	$(MAKE) htop-clean
 	$(MAKE) tree-clean
@@ -198,6 +202,8 @@ init-env:
 	printf '[Match]\nName=en*\n\n[Network]\nDHCP=ipv4\n' \
 		>/etc/systemd/network/10-wired.network
 	ln -rsf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+	systemctl restart systemd-networkd
+	make-ca -g
 
 include mak/man_pages.mak
 include mak/iana_etc.mak
@@ -267,6 +273,8 @@ include mak/dbus.mak
 include mak/linux.mak
 
 include mak/libtasn1.mak
+include mak/p11_kit.mak
+include mak/make_ca.mak
 include mak/libnl.mak
 include mak/htop.mak
 include mak/tree.mak

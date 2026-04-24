@@ -54,6 +54,7 @@
 /src/lz4-*
 /src/m4-*
 /src/make-*
+/src/make_ca-*
 /src/man-pages-*
 /src/markupsafe-*
 /src/meson-*
@@ -62,6 +63,7 @@
 /src/ncurses-*
 /src/ninja-*
 /src/openssl-*
+/src/p11-kit-*
 /src/packaging-*
 /src/patch-*
 /src/pcre2-*
