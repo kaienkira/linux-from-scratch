@@ -5,7 +5,8 @@ default \
 build \
 clean \
 clean-p1-temp-files \
-init-env
+init-env \
+init-env2
 
 default:
 
@@ -202,7 +203,8 @@ init-env:
 	printf '[Match]\nName=en*\n\n[Network]\nDHCP=ipv4\n' \
 		>/etc/systemd/network/10-wired.network
 	ln -rsf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-	systemctl restart systemd-networkd
+
+init-env2:
 	make-ca -g
 
 include mak/man_pages.mak

@@ -1,5 +1,5 @@
-LFS_GCC_VERSION = 15.2.0
-LFS_GCC_PATCH_VERSION = 5
+LFS_GCC_VERSION = 16.1.0
+LFS_GCC_PATCH_VERSION = 1
 LFS_GCC_SRC_TAR = $(abspath src/gcc-$(LFS_GCC_VERSION).tar.xz)
 LFS_GCC_SRC_DIR = $(abspath src/gcc-$(LFS_GCC_VERSION))
 LFS_GCC_PATCH_TAR = $(abspath src/gcc_patch-$(LFS_GCC_VERSION)-$(LFS_GCC_PATCH_VERSION).tar.xz)
@@ -44,8 +44,6 @@ gcc-extract-dep:
 gcc-build-p1:
 	$(MAKE) gcc-extract-src
 	$(MAKE) gcc-extract-dep
-	cd "$(LFS_GCC_SRC_DIR)" && \
-		sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 	mkdir -p "$(LFS_GCC_SRC_DIR)"/build
 	cd "$(LFS_GCC_SRC_DIR)"/build && \
 		../configure \
@@ -102,10 +100,6 @@ gcc-build-p1-libstdcxx:
 gcc-build-p2:
 	$(MAKE) gcc-extract-src
 	$(MAKE) gcc-extract-dep
-	cd "$(LFS_GCC_SRC_DIR)" && \
-		sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64 && \
-		sed -i '/thread_header =/s/@.*@/gthr-posix.h/' \
-			libgcc/Makefile.in libstdc++-v3/include/Makefile.in
 	mkdir -p "$(LFS_GCC_SRC_DIR)"/build
 	cd "$(LFS_GCC_SRC_DIR)"/build && \
 		../configure \
@@ -135,9 +129,6 @@ gcc-build-p2:
 
 gcc-build:
 	$(MAKE) gcc-extract-src
-	cd "$(LFS_GCC_SRC_DIR)" && \
-		sed -i 's/char [*]q/const &/' libgomp/affinity-fmt.c && \
-		sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 	mkdir -p "$(LFS_GCC_SRC_DIR)"/build
 	cd "$(LFS_GCC_SRC_DIR)"/build && \
 		../configure \
