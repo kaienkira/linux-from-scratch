@@ -6,7 +6,7 @@ archlinux:
     pacman -S base-devel
 
 debian:
-    apt install build-essential bison
+    apt install build-essential bison uidmap
 
 make download-source
 make build
