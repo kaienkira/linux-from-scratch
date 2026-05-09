@@ -3,10 +3,10 @@ linux-from-scratch
 
 ```
 archlinux:
-    pacman -S base-devel
+    pacman -S base-devel qemu-full
 
 debian:
-    apt install build-essential bison uidmap
+    apt install build-essential bison uidmap qemu-system
 
 make download-source
 make build
