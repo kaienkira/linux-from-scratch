@@ -1,4 +1,4 @@
-LFS_EXPAT_VERSION = 2.7.5
+LFS_EXPAT_VERSION = 2.8.1
 LFS_EXPAT_SRC_TAR = $(abspath src/expat-$(LFS_EXPAT_VERSION).tar.xz)
 LFS_EXPAT_SRC_DIR = $(abspath src/expat-$(LFS_EXPAT_VERSION))
 
