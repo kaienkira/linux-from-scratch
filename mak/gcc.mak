@@ -1,5 +1,5 @@
 LFS_GCC_VERSION = 16.1.0
-LFS_GCC_PATCH_VERSION = 1
+LFS_GCC_PATCH_VERSION = 2
 LFS_GCC_SRC_TAR = $(abspath src/gcc-$(LFS_GCC_VERSION).tar.xz)
 LFS_GCC_SRC_DIR = $(abspath src/gcc-$(LFS_GCC_VERSION))
 LFS_GCC_PATCH_TAR = $(abspath src/gcc_patch-$(LFS_GCC_VERSION)-$(LFS_GCC_PATCH_VERSION).tar.xz)

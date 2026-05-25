@@ -1,4 +1,4 @@
-LFS_LIBCAP_VERSION = 2.77
+LFS_LIBCAP_VERSION = 2.78
 LFS_LIBCAP_SRC_TAR = $(abspath src/libcap-$(LFS_LIBCAP_VERSION).tar.xz)
 LFS_LIBCAP_SRC_DIR = $(abspath src/libcap-$(LFS_LIBCAP_VERSION))
 
