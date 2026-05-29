@@ -134,7 +134,7 @@ download_file 'https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-34.2.tar.
 download_file 'https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-7.0.0.tar.xz'
 download_file 'https://www.kernel.org/pub/linux/utils/kbd/kbd-2.9.0.tar.xz'
 download_patch 'https://www.linuxfromscratch.org/patches/lfs/13.0/kbd-2.9.0-backspace-1.patch'
-download_file 'https://github.com/systemd/systemd/archive/v260.1/systemd-260.1.tar.gz'
+download_file 'https://github.com/systemd/systemd/archive/v260.2/systemd-260.2.tar.gz'
 download_file 'https://dbus.freedesktop.org/releases/dbus/dbus-1.16.2.tar.xz'
 
 download_file 'https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.21.0.tar.gz'
