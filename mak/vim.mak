@@ -1,4 +1,4 @@
-LFS_VIM_VERSION = 9.2.0280
+LFS_VIM_VERSION = 9.2.0612
 LFS_VIM_SRC_TAR = $(abspath src/vim-$(LFS_VIM_VERSION).tar.gz)
 LFS_VIM_SRC_DIR = $(abspath src/vim-$(LFS_VIM_VERSION))
 

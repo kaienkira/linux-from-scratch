@@ -1,4 +1,4 @@
-LFS_OPENSSL_VERSION = 3.6.2
+LFS_OPENSSL_VERSION = 3.6.3
 LFS_OPENSSL_SRC_TAR = $(abspath src/openssl-$(LFS_OPENSSL_VERSION).tar.gz)
 LFS_OPENSSL_SRC_DIR = $(abspath src/openssl-$(LFS_OPENSSL_VERSION))
 

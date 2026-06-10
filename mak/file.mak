@@ -1,4 +1,4 @@
-LFS_FILE_VERSION = 5.47
+LFS_FILE_VERSION = 5.48
 LFS_FILE_SRC_TAR = $(abspath src/file-$(LFS_FILE_VERSION).tar.gz)
 LFS_FILE_SRC_DIR = $(abspath src/file-$(LFS_FILE_VERSION))
 
