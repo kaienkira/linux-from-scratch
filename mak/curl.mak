@@ -1,4 +1,4 @@
-LFS_CURL_VERSION = 8.20.0
+LFS_CURL_VERSION = 8.21.0
 LFS_CURL_SRC_TAR = $(abspath src/curl-$(LFS_CURL_VERSION).tar.xz)
 LFS_CURL_SRC_DIR = $(abspath src/curl-$(LFS_CURL_VERSION))
 
