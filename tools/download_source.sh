@@ -119,7 +119,7 @@ download_file 'https://sourceforge.net/projects/psmisc/files/psmisc/psmisc-23.7.
 download_file 'https://ftp.gnu.org/gnu/libtool/libtool-2.5.4.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/gdbm/gdbm-1.26.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/gperf/gperf-3.3.tar.gz'
-download_file 'https://github.com/libexpat/libexpat/releases/download/R_2_8_1/expat-2.8.1.tar.xz'
+download_file 'https://github.com/libexpat/libexpat/releases/download/R_2_8_2/expat-2.8.2.tar.xz'
 download_file 'https://www.greenwoodsoftware.com/less/less-692.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/autoconf/autoconf-2.73.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/automake/automake-1.18.tar.xz'
