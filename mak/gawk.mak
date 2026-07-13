@@ -1,4 +1,4 @@
-LFS_GAWK_VERSION = 5.4.0
+LFS_GAWK_VERSION = 5.4.1
 LFS_GAWK_SRC_TAR = $(abspath src/gawk-$(LFS_GAWK_VERSION).tar.xz)
 LFS_GAWK_SRC_DIR = $(abspath src/gawk-$(LFS_GAWK_VERSION))
 
