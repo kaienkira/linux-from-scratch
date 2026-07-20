@@ -46,6 +46,7 @@ build-world:
 	$(MAKE) libcap-build
 	$(MAKE) libxcrypt-build
 	$(MAKE) shadow-build
+	$(MAKE) gawk-build
 	$(MAKE) gcc-build
 	$(MAKE) ncurses-build
 	$(MAKE) sed-build
@@ -77,7 +78,6 @@ build-world:
 	$(MAKE) python-jinja2-build
 	$(MAKE) coreutils-build
 	$(MAKE) diffutils-build
-	$(MAKE) gawk-build
 	$(MAKE) findutils-build
 	$(MAKE) groff-build
 	$(MAKE) gzip-build
