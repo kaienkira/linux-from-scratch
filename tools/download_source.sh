@@ -59,7 +59,7 @@ download_patch()
     if [ $? -ne 0 ]; then exit 1; fi
 }
 
-download_file 'https://ftp.gnu.org/gnu/binutils/binutils-2.46.1.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/binutils/binutils-2.47.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.2.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz'
