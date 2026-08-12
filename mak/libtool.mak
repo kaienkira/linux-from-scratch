@@ -1,4 +1,4 @@
-LFS_LIBTOOL_VERSION = 2.5.4
+LFS_LIBTOOL_VERSION = 2.6.2
 LFS_LIBTOOL_SRC_TAR = $(abspath src/libtool-$(LFS_LIBTOOL_VERSION).tar.xz)
 LFS_LIBTOOL_SRC_DIR = $(abspath src/libtool-$(LFS_LIBTOOL_VERSION))
 

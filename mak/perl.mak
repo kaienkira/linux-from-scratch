@@ -1,4 +1,4 @@
-LFS_PERL_VERSION = 5.42.0
+LFS_PERL_VERSION = 5.42.2
 LFS_PERL_SRC_TAR = $(abspath src/perl-$(LFS_PERL_VERSION).tar.xz)
 LFS_PERL_SRC_DIR = $(abspath src/perl-$(LFS_PERL_VERSION))
 
