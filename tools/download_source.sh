@@ -123,7 +123,7 @@ download_file 'https://github.com/libexpat/libexpat/releases/download/R_2_8_3/ex
 download_file 'https://www.greenwoodsoftware.com/less/less-692.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/autoconf/autoconf-2.73.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/automake/automake-1.18.tar.xz'
-download_file 'https://github.com/openssl/openssl/releases/download/openssl-3.6.3/openssl-3.6.3.tar.gz'
+download_file 'https://github.com/openssl/openssl/releases/download/openssl-3.6.4/openssl-3.6.4.tar.gz'
 download_file 'https://sourceware.org/ftp/elfutils/0.195/elfutils-0.195.tar.bz2'
 download_file 'https://github.com/libffi/libffi/releases/download/v3.5.2/libffi-3.5.2.tar.gz'
 download_file 'https://sqlite.org/2026/sqlite-autoconf-3510200.tar.gz'
