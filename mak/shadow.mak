@@ -1,4 +1,4 @@
-LFS_SHADOW_VERSION = 4.19.4
+LFS_SHADOW_VERSION = 4.20.2
 LFS_SHADOW_SRC_TAR = $(abspath src/shadow-$(LFS_SHADOW_VERSION).tar.xz)
 LFS_SHADOW_SRC_DIR = $(abspath src/shadow-$(LFS_SHADOW_VERSION))
 

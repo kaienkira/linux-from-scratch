@@ -1,4 +1,4 @@
-LFS_PCRE2_VERSION = 10.47
+LFS_PCRE2_VERSION = 10.48
 LFS_PCRE2_SRC_TAR = $(abspath src/pcre2-$(LFS_PCRE2_VERSION).tar.gz)
 LFS_PCRE2_SRC_DIR = $(abspath src/pcre2-$(LFS_PCRE2_VERSION))
 
