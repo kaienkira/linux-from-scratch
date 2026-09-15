@@ -1,4 +1,4 @@
-LFS_TZDATA_VERSION = 2026a
+LFS_TZDATA_VERSION = 2026d
 LFS_TZDATA_SRC_TAR = $(abspath src/tzdata$(LFS_TZDATA_VERSION).tar.gz)
 LFS_TZDATA_SRC_DIR = $(abspath src/tzdata-$(LFS_TZDATA_VERSION))
 
