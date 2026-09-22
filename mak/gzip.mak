@@ -1,4 +1,4 @@
-LFS_GZIP_VERSION = 1.14
+LFS_GZIP_VERSION = 1.15
 LFS_GZIP_SRC_TAR = $(abspath src/gzip-$(LFS_GZIP_VERSION).tar.xz)
 LFS_GZIP_SRC_DIR = $(abspath src/gzip-$(LFS_GZIP_VERSION))
 

@@ -1,4 +1,4 @@
-LFS_LESS_VERSION = 692
+LFS_LESS_VERSION = 710
 LFS_LESS_SRC_TAR = $(abspath src/less-$(LFS_LESS_VERSION).tar.gz)
 LFS_LESS_SRC_DIR = $(abspath src/less-$(LFS_LESS_VERSION))
 
