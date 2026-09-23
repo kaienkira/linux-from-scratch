@@ -1,4 +1,4 @@
-LFS_XZ_VERSION = 5.8.2
+LFS_XZ_VERSION = 5.8.4
 LFS_XZ_SRC_TAR = $(abspath src/xz-$(LFS_XZ_VERSION).tar.xz)
 LFS_XZ_SRC_DIR = $(abspath src/xz-$(LFS_XZ_VERSION))
 
