@@ -71,7 +71,7 @@ download_patch 'https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/ca/glibc-2
 download_file 'https://ftp.gnu.org/gnu/m4/m4-1.4.21.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/ncurses/ncurses-6.6.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/bash/bash-5.3.tar.gz'
-download_file 'https://ftp.gnu.org/gnu/coreutils/coreutils-9.11.tar.xz'
+download_file 'https://ftp.gnu.org/gnu/coreutils/coreutils-9.12.tar.xz'
 download_file 'https://ftp.gnu.org/gnu/diffutils/diffutils-3.12.tar.xz'
 download_file 'https://astron.com/pub/file/file-5.48.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/findutils/findutils-4.11.0.tar.xz'
