@@ -106,7 +106,7 @@ download_patch 'https://www.linuxfromscratch.org/patches/lfs/13.0/bzip2-1.0.8-in
 download_file 'https://github.com/lz4/lz4/releases/download/v1.10.0/lz4-1.10.0.tar.gz'
 download_file 'https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/readline/readline-8.3.tar.gz'
-download_file 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.48/pcre2-10.48.tar.gz'
+download_file 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.49/pcre2-10.49.tar.gz'
 download_file 'https://ftp.gnu.org/gnu/bc/bc-1.08.2.tar.gz'
 download_file 'https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz'
 download_file 'https://distfiles.ariadne.space/pkgconf/pkgconf-2.5.1.tar.xz'
