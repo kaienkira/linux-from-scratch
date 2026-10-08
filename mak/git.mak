@@ -1,4 +1,4 @@
-LFS_GIT_VERSION = 2.54.0
+LFS_GIT_VERSION = 2.56.0
 LFS_GIT_SRC_TAR = $(abspath src/git-$(LFS_GIT_VERSION).tar.xz)
 LFS_GIT_SRC_DIR = $(abspath src/git-$(LFS_GIT_VERSION))
 
@@ -20,8 +20,8 @@ git-build:
 			--with-python=python3 \
 			--with-libpcre2 \
 			&& \
-		make -j$(NPROC) && \
-		make install
+		make NO_RUST=1 -j$(NPROC) && \
+		make NO_RUST=1 install
 	rm -rf "$(LFS_GIT_SRC_DIR)"
 
 git-clean:
