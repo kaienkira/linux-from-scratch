@@ -1,4 +1,4 @@
-LFS_PKGCONF_VERSION = 2.5.1
+LFS_PKGCONF_VERSION = 3.0.10
 LFS_PKGCONF_SRC_TAR = $(abspath src/pkgconf-$(LFS_PKGCONF_VERSION).tar.xz)
 LFS_PKGCONF_SRC_DIR = $(abspath src/pkgconf-$(LFS_PKGCONF_VERSION))
 
