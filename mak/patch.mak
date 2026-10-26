@@ -1,4 +1,4 @@
-LFS_PATCH_VERSION = 2.8
+LFS_PATCH_VERSION = 2.8.1
 LFS_PATCH_SRC_TAR = $(abspath src/patch-$(LFS_PATCH_VERSION).tar.xz)
 LFS_PATCH_SRC_DIR = $(abspath src/patch-$(LFS_PATCH_VERSION))
 
