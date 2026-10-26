@@ -11,6 +11,7 @@ tar-clean
 tar-extract-src:
 	rm -rf "$(LFS_TAR_SRC_DIR)"
 	tar -xvf "$(LFS_TAR_SRC_TAR)" -C src/
+	patch -d "$(LFS_TAR_SRC_DIR)" -N -p1 -i ../tar-1.35-fix-libacl-conflicts.patch
 
 tar-build-p1:
 	$(MAKE) tar-extract-src
