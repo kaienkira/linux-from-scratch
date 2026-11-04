@@ -1,4 +1,4 @@
-LFS_KMOD_VERSION = 34.2
+LFS_KMOD_VERSION = 34.3
 LFS_KMOD_SRC_TAR = $(abspath src/kmod-$(LFS_KMOD_VERSION).tar.xz)
 LFS_KMOD_SRC_DIR = $(abspath src/kmod-$(LFS_KMOD_VERSION))
 

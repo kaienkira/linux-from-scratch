@@ -1,4 +1,4 @@
-LFS_SQLITE_VERSION = autoconf-3510200
+LFS_SQLITE_VERSION = autoconf-3540100
 LFS_SQLITE_SRC_TAR = $(abspath src/sqlite-$(LFS_SQLITE_VERSION).tar.gz)
 LFS_SQLITE_SRC_DIR = $(abspath src/sqlite-$(LFS_SQLITE_VERSION))
 
