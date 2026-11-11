@@ -1,4 +1,4 @@
-LFS_ZLIB_VERSION = 1.3.2
+LFS_ZLIB_VERSION = 1.4
 LFS_ZLIB_SRC_TAR = $(abspath src/zlib-$(LFS_ZLIB_VERSION).tar.gz)
 LFS_ZLIB_SRC_DIR = $(abspath src/zlib-$(LFS_ZLIB_VERSION))
 
