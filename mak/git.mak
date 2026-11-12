@@ -1,4 +1,4 @@
-LFS_GIT_VERSION = 2.56.0
+LFS_GIT_VERSION = 2.56.1
 LFS_GIT_SRC_TAR = $(abspath src/git-$(LFS_GIT_VERSION).tar.xz)
 LFS_GIT_SRC_DIR = $(abspath src/git-$(LFS_GIT_VERSION))
 
